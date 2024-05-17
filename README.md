@@ -1,8 +1,47 @@
-# React + Vite
+![logo]()
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 💻 Para desenvolvimento:
 
-Currently, two official plugins are available:
+1. Clone o repositório.
+2. Instale as dependências:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```
+npm run dev
+```
+
+3. Vá para a branch **develop** e a partir dela, crie uma branch para desenvolver sua feature.
+
+## Lembrar:
+
+- Quando for abrir um PR, fazer colocar para fazer o **merge na develop**, e não na main.
+- Antes de subir seu código, atualizar sempre em máquina a **develop**.
+
+```
+git pull origin develop
+```
+
+- Caso queira puxar alguma branch, rode:
+
+```
+git fetch
+```
+
+## Sobre
+
+...
+
+## Tecnologias
+
+Foram utilizadas no projeto as seguintes tecnologias:
+
+- React.js
+- React Router Dom
+- React Icons
+
+## API
+
+A aplicação utiliza a API que pode ser encontrada [nesse repositório](), onde você encontrará o passo a passo de como consumi-la. 🚀
+
+## Protótipo
+
+O protótipo deste projeto pode ser encontrago no [Figma](). 😊
