@@ -10,13 +10,13 @@ export const Header = props => {
          style={{backgroundColor: islogged && "black"}}>
 
          {islogged ? 
-             <Link to={"/home"}>
+             <Link to={"/"}>
                   <h1 style={{color: 'white'}}>
                      EVENT <span className={style.span}>&#10040;</span><br/> HUNTERS
                   </h1>
             </Link>
          :
-         <Link to={"/home"}>
+         <Link to={"/"}>
             <h1>
                EVENT <span className={style.span}>&#10040;</span><br/> HUNTERS
             </h1> 

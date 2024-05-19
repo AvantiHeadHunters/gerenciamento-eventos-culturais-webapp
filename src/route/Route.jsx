@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import { BasicLayout } from "../layouts/index.js"
 import {
-   InicialPage,
+   InitialPage,
    Login,
    SignUp,
    FormCreateCategory,
@@ -14,7 +14,7 @@ export const Routers = props => {
    return (
       <Routes>
          <Route path="/" element={<BasicLayout />}>
-            <Route path="/home" element={<InicialPage/>} />
+            <Route index element={<InitialPage/>} />
             <Route path="/form/create/event" element={<FormCreateEvent />} />
             <Route path="/form/create/category" element={<FormCreateCategory/>}/>
             <Route path="/form/create/location" element={<FormCreateLocation/>} />
