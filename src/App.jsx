@@ -1,8 +1,14 @@
+import { ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter } from "react-router-dom";
+import { Routers } from "./route/Route.jsx";
+
 const App = () => {
   return (
-    <>
-      <h1>Boraaa!!! 🚀👀</h1>
-    </>
+    <ChakraProvider>
+      <BrowserRouter>
+         <Routers />
+      </BrowserRouter>
+    </ChakraProvider>
   );
 };
 
