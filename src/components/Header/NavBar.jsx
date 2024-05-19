@@ -9,19 +9,26 @@ export const NavBar = props => {
    return (
       <>
       { islogged ? 
-      <Flex className={style.NavBar} display={{base: "none", md: "flex"}} >
+      <Flex 
+      className={style.NavBar} 
+      display={{base: "none", md: "flex"}} >
          <NavBarItem to={"/home"} name={"Página Inicial"} logged/>
          <NavBarItem to={"/conta"} name={"Sua Conta"} logged/>
          <NavBarItem to={"/logout"} name={"Logout"}  logout />
       </Flex> :
-      <Flex className={style.NavBar} display={{base: "none", md: "flex"}} >
+      <Flex 
+      className={style.NavBar} 
+      display={{base: "none", md: "flex"}} >
          <NavBarItem to={"/home"} name={"Explore"} />
          <NavBarItem to={"/formevent"} name={"Criar"} />
          <NavBarItem to={"/cadastro"} name={"Cadastre-se"} />
          <NavBarItem to={"/login"} name={"Entrar"} bold />
       </Flex>
       }
-      <HStack display={{base: "flex", md: "none"}} position={"absolute"} right={"5px"} backgroundColor={"white"}>
+      <HStack 
+      display={{base: "flex", md: "none"}} 
+      position={"absolute"} right={"5px"} 
+      backgroundColor={"white"}>
          {isOpen && <ToggleContent {...props} />}
          <Toggle isOpen={isOpen} onToggle={onToggle} />
       </HStack>
@@ -32,9 +39,15 @@ export const NavBar = props => {
 const NavBarItem = ({name, to, bold, logged, logout}) => {
    const styleButton = {
       backgroundColor: (bold && "#000") || (logged && "#000"),
-      color:  (bold && "white" ) || (logged && "white") || (logout && "yellow"),
+      color:  
+      (bold && "white" ) || 
+      (logged && "white") || 
+      (logout && "yellow"),
       borderRadius:  bold && 10,
-      border: ( bold && "1px solid white") || (logged && "none") || (logout && "1px yellow solid"),
+      border: 
+      ( bold && "1px solid white") || 
+      (logged && "none") || 
+      (logout && "1px yellow solid"),
       paddingHorizontal: 25,
       paddingVertical:30,
    };

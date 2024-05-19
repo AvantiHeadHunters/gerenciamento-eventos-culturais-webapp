@@ -20,8 +20,9 @@ export const Toggle = ({isOpen, onToggle}) => {
 export const ToggleContent = props => {
    const {islogged} = props;
    return (
-      <Box className={style.Toggle} border={"1px black solid"} >
+      <Box className={style.Toggle} border={"1px black solid"}>
         {islogged ?  
+
          <Stack 
          position={"absolute"} 
          right={"45px"} 
@@ -30,8 +31,8 @@ export const ToggleContent = props => {
          padding={"5px"}
          border={"1px #000 solid"}
          backgroundColor={"white"}
-         borderRadius={"12px"}
-         >
+         borderRadius={"12px"}>
+
             <ToggleItem to={"/home"} logged>Página Inicial</ToggleItem>
             <ToggleItem to={"/conta"} logged>Sua Conta</ToggleItem>
             <ToggleItem to={"/logout"} logged>Logout</ToggleItem>
@@ -45,8 +46,7 @@ export const ToggleContent = props => {
          backgroundColor={"white"}
          padding={"5px"}
          border={"solid 1px #000"}
-         borderRadius={"13px"}
-         >
+         borderRadius={"13px"} >
             <ToggleItem to={"/"}>Explore</ToggleItem>
             <ToggleItem to={"/formevent"}>Criar</ToggleItem>
             <ToggleItem to={"/cadastro"}>Cadastrar</ToggleItem>
@@ -61,7 +61,10 @@ export const ToggleContent = props => {
 export const ToggleItem = props => {
    return (
       <Link to={props.to}>
-         <Box style={{color: "#000" || (props.logged && "#fff")}}>{props.children}</Box>
+         <Box 
+         style={{color: "#000" || (props.logged && "#fff")}}>
+            {props.children}
+         </Box>
          <hr className={style.solid}/>
       </Link>
    )

@@ -10,55 +10,62 @@ export const Login = props => {
    
       return (
          <Flex className={style.Container} flexDirection={"row"}>
+
             <div className={style.logoContainer}>
-            <h1 className={style.title}>EVENT <span style={{color: "yellow"}}>&#10040;</span><br/> HUNTERS</h1> 
+               <h1 className={style.title}>
+                  EVENT <span style={{color: "yellow"}}>&#10040;</span><br/> HUNTERS
+               </h1> 
             </div>
-         <div className={style.formContainer}>
-         <form onSubmit={handleSubmit(onsubmit)}>
-            <h1>Login</h1>
+           <div className={style.formContainer}>
 
-            <label>Email</label>
+             <form onSubmit={handleSubmit(onsubmit)}>
+               <h1>Login</h1>
 
-            <input
-               type="text" {...register("email", {required: "Insira o nome do evento", pattern: /\S+@\S+\.\S+/})}/>
+               <label>Email</label>
 
-            <label>Senha</label>
-            <input type={"text"} {...register("password", {required: "Insira a senha", })}/>
+               <input
+                  type="text" 
+                  {...register("email", {required: "Insira o nome do evento", pattern: /\S+@\S+\.\S+/})}/>
 
-            {(errors.password || errors.email ) &&
-             <Text style={{ 
-               margin: "10px 0", 
-               color: "red", 
-               fontWeight: "bold", 
-               fontSize: 15, 
-               textAlign: "center"}}>Email ou senha Incorretos</Text> }
-            <ButtonGroup 
-            gap={4} 
-            flexDirection={"row"} 
-            justifyContent={"center"}
-            marginTop={"35px"}>
-            <button className={style.button} type="submit">Entrar</button>
-            </ButtonGroup>
+               <label>Senha</label>
+               <input
+                  type={"text"} {...register("password", {required: "Insira a senha", })}/>
 
-            <ButtonGroup flexDirection={"column"} alignItems={"center"}>
-               <p style={{textAlign: "center", margin: "10px 0 0 5px"}}>Ainda não tem conta?</p>
-               <Button 
-               variant={"ghost"} 
-               colorScheme="gray" 
-               width={"max-content"}
-               onClick={() => { navigate("/cadastro")}}>
-                  Cadastre-se
-               </Button>
+               {(errors.password || errors.email ) &&
+               <Text style={{ 
+                  margin: "10px 0", 
+                  color: "red", 
+                  fontWeight: "bold", 
+                  fontSize: 15, 
+                  textAlign: "center"}}>Email ou senha Incorretos</Text> }
 
-               <Button 
-               variant={"ghost"} 
-               colorScheme="gray" 
-               width={"max-content"}               
-               onClick={() => { navigate("/home")}}>
-                  Voltar para a Tela Inicial
-               </Button>
-            </ButtonGroup>
-         </form>
+               <ButtonGroup 
+               gap={4} 
+               flexDirection={"row"} 
+               justifyContent={"center"}
+               marginTop={"35px"}>
+                  <button className={style.button} type="submit">Entrar</button>
+               </ButtonGroup>
+
+               <ButtonGroup flexDirection={"column"} alignItems={"center"}>
+                  <p style={{textAlign: "center", margin: "10px 0 0 5px"}}>Ainda não tem conta?</p>
+                  <Button 
+                  variant={"ghost"} 
+                  colorScheme="gray" 
+                  width={"max-content"}
+                  onClick={() => { navigate("/cadastro")}}>
+                     Cadastre-se
+                  </Button>
+
+                  <Button 
+                  variant={"ghost"} 
+                  colorScheme="gray" 
+                  width={"max-content"}               
+                  onClick={() => { navigate("/home")}}>
+                     Voltar para a Tela Inicial
+                  </Button>
+               </ButtonGroup>
+          </form>
          </div>
           </Flex>
       )
