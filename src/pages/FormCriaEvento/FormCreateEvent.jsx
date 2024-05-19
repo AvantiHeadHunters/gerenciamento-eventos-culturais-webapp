@@ -9,8 +9,11 @@ export const FormCreateEvent = props => {
    return (
     
       <div className={style.formContainer}>
+         
       <form onSubmit={handleSubmit(onsubmit)}>
+
          <h1>Crie um Evento</h1>
+
          <label>Nome</label>
          <input type="text" {...register("name", {required: "Insira o nome do evento"})}/>
          <label>Descrição</label>

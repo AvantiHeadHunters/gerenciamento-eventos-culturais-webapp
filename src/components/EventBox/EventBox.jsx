@@ -9,8 +9,7 @@ export const EventBox = ({event}) => {
          <Image src={event.image} 
          height={"60%"}
          width={"100%"}
-         borderTopRightRadius={"14px"} 
-         borderTopLeftRadius={"14px"} />
+         borderRadius={"14px"} />
 
          <Flex flexDirection={"row"}justifyContent={"space-between"} padding={"10px"}>
             <Flex flexDirection={"column"} gap={["1"," 4"]}  >
@@ -19,8 +18,8 @@ export const EventBox = ({event}) => {
                <h2>{event.date}</h2>
             </Flex>
             <ButtonGroup className={style.ButtonGroup} flexDirection={"column"} gap={[2,4]} size={["xs", "sm", "md"]}>
-               <IconButton icon={<EditIcon />} size={["xs", "sm", "md"]} sx={{"@media (max-width: 750px)" : {width: "8px", margin: 0}, }} />
-               <IconButton icon={<DeleteIcon />} size={["xs", "sm", "md"]} sx={{"@media (max-width: 750px)" : {width: "8px", margin: 0}}}/>
+               <IconButton icon={<EditIcon />} size={["xs", "sm", "md"]}/>
+               <IconButton icon={<DeleteIcon />} size={["xs", "sm", "md"]} />
             </ButtonGroup>
 
          </Flex>

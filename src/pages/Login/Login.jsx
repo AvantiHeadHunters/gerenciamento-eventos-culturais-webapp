@@ -31,7 +31,7 @@ export const Login = props => {
             </ButtonGroup>
 
             <ButtonGroup flexDirection={"column"} alignItems={"center"}>
-               <p style={{textAlign: "center"}}>Ainda não tem conta?</p>
+               <p style={{textAlign: "center", margin: "10px 0 0 5px"}}>Ainda não tem conta?</p>
                <Button 
                variant={"ghost"} 
                colorScheme="gray" 

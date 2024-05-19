@@ -7,7 +7,6 @@ import { FormCreateCategory } from "../pages/FormCriaCategoria/FormCreateCategor
 import { FormCreateLocation } from "../pages/FormCriaLocal/FormCreateLocation.jsx"
 import { Cadastro } from "../pages/Cadastro/Cadastro.jsx"
 import { Login } from "../pages/Login/Login.jsx"
-import { EventBox } from "../components/EventBox/EventBox.jsx"
 
 export const Routers = props => {
    return (
@@ -17,7 +16,6 @@ export const Routers = props => {
             <Route path="/formevent" element={<FormCreateEvent />} />
             <Route path="/formcategory" element={<FormCreateCategory/>}/>
             <Route path="/formlocation" element={<FormCreateLocation/>} />
-            <Route path="/teste/eventbox" element={<EventBox/>} />
          </Route>
          <Route path="*" element={<PageNotFound/>} />
          <Route path="/cadastro" element={<Cadastro/>}/>
