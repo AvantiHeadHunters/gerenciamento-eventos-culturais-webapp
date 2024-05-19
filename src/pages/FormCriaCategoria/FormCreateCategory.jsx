@@ -3,7 +3,11 @@ import { useForm } from "react-hook-form"
 import style from './formcreatecategory.module.css'
 
 export const FormCreateCategory = props => {
-   const {register, handleSubmit, formState: {errors,}} = useForm()
+   const {register, handleSubmit, formState: {errors,}} = useForm({
+         name: '',
+         description: '',
+         image: '',
+   })
    const onsubmit = data => console.log(data)
 
    return (
@@ -17,6 +21,7 @@ export const FormCreateCategory = props => {
          <textarea  {...register("description", {required: "Insira o nome da Categoria"})}/>
          <label>Imagem</label>
          <input type="text" {...register("image", {required: "Insira a Imagem da Categoria"})} />
+
          {errors.name && <h1>{errors.name.message}</h1>}
          <ButtonGroup 
          gap={4} 

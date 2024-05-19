@@ -22,10 +22,10 @@ export const Cadastro = props => {
             <label>Email</label>
             <input type="text" {...register("email", {required: "Insira o email"})}/>
             <label>Senha</label>
-            <input type={"text"} {...register("password", {required: "Insira a senha"})}/>
+            <input type={"text"} {...register("password", {required: "Insira a senha", pattern: /\S+@\S+\.\S+/})}/>
 
-            {(errors.name || errors.email ) 
-            && <span style={{color: "red", fontWeight: "bold", fontSize: 15}}>Email ou senha Incorretos</span>}
+            {(errors.name || errors.email || errors.password ) 
+            && <span style={{color: "red", fontWeight: "bold", margin: "10px 0", fontSize: 15, textAlign: "center"}}>Email ou senha Incorretos</span>}
 
             <ButtonGroup 
             gap={4} 

@@ -3,13 +3,20 @@ import { useForm } from "react-hook-form"
 import style from './formcreateevent.module.css'
 
 export const FormCreateEvent = props => {
-   const {register, handleSubmit, formState: {errors,}} = useForm()
+   const {register, handleSubmit, formState: {errors,}} = useForm({
+      defaultValues: {
+         name: '',
+         description: '',
+         date: '',
+         location: '',
+      }
+   })
    const onsubmit = data => console.log(data)
 
    return (
     
       <div className={style.formContainer}>
-         
+
       <form onSubmit={handleSubmit(onsubmit)}>
 
          <h1>Crie um Evento</h1>

@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Flex } from '@chakra-ui/react'
+import { Button, ButtonGroup, Flex, Text } from '@chakra-ui/react'
 import style from './login.module.css'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -16,17 +16,27 @@ export const Login = props => {
          <div className={style.formContainer}>
          <form onSubmit={handleSubmit(onsubmit)}>
             <h1>Login</h1>
+
             <label>Email</label>
-            <input style={{border: "red" && (errors.email || errors.pasword)}} type="text" {...register("email", {required: "Insira o nome do evento"})}/>
+
+            <input
+               type="text" {...register("email", {required: "Insira o nome do evento", pattern: /\S+@\S+\.\S+/})}/>
+
             <label>Senha</label>
-            <input type={"text"} {...register("password", {required: "Insira o email", pattern: /\S+@\S+\.\S+/})}/>
-            {(errors.name || errors.email ) && <span style={{color: "red", fontWeight: "bold", fontSize: 15}}>Email ou senha Incorretos</span>}
+            <input type={"text"} {...register("password", {required: "Insira a senha", })}/>
+
+            {(errors.password || errors.email ) &&
+             <Text style={{ 
+               margin: "10px 0", 
+               color: "red", 
+               fontWeight: "bold", 
+               fontSize: 15, 
+               textAlign: "center"}}>Email ou senha Incorretos</Text> }
             <ButtonGroup 
             gap={4} 
             flexDirection={"row"} 
             justifyContent={"center"}
-            marginTop={"35px"}
-            >
+            marginTop={"35px"}>
             <button className={style.button} type="submit">Entrar</button>
             </ButtonGroup>
 
@@ -36,15 +46,17 @@ export const Login = props => {
                variant={"ghost"} 
                colorScheme="gray" 
                width={"max-content"}
-               onClick={() => { navigate("/cadastro")}}
-               >Cadastre-se</Button>
+               onClick={() => { navigate("/cadastro")}}>
+                  Cadastre-se
+               </Button>
 
                <Button 
                variant={"ghost"} 
                colorScheme="gray" 
                width={"max-content"}               
-               onClick={() => { navigate("/home")}}
-               >Voltar para a Tela Inicial</Button>
+               onClick={() => { navigate("/home")}}>
+                  Voltar para a Tela Inicial
+               </Button>
             </ButtonGroup>
          </form>
          </div>
