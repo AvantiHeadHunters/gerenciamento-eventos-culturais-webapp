@@ -1,0 +1,89 @@
+.Container{
+   height: 100vh;
+   width: 100%;
+}
+
+.Container div.logoContainer{
+   font-family: "Lexend Deca", sans-serif;
+   font-weight: bold;
+   width:45%;
+   height:100%;
+   background-color:#1e1e1e;
+   display: flex;
+   justify-content:center;
+   align-items:center;
+}
+
+.Container div.formContainer{
+   width: 55%;
+}
+
+.title{
+   font-weight: bold;
+   font-family: "Lexand Deca", sans-serif;
+   font-size: 75px;
+   color: white
+
+}
+
+.Container form{
+   font-family: "Inter", sans-serif;
+   top: 10%;
+   bottom: 10%;
+   width: 50%;
+   margin-left: 20%;
+   display: flex;
+   flex-direction: column;
+   position: relative;
+  
+}
+.Container form input {
+   border: 3px black solid;
+   border-radius: 14px;
+   padding: 12px;
+   margin: 5px 0;
+   box-shadow: -8px 5px 1px 2px #0d0d0d;
+}
+.Container form label{
+   margin: 5px 0;
+}
+
+.Container form h1{
+
+   font-size: 35px;
+   font-weight: bold;
+   margin-bottom: 40px;
+}
+
+.button{
+   border: 3px black solid;
+   padding: 15px;
+   font-weight: bold;
+   border-radius: 14px;
+}
+
+@media (max-width: 830px) {
+   .logoContainer  {
+      display: none !important;
+   }
+
+
+   .Container div.formContainer{
+      width: 100% !important;
+   }
+   .Container form{
+      width: 60%;
+      margin: 0 auto;
+   }
+}
+
+@media (max-width: 500px){
+   .logoContainer  {
+      display: none !important;
+   }
+
+   .Container form{
+      width: 90%;
+      margin: 0 auto;
+   }
+}
