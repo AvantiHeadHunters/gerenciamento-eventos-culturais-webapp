@@ -1,5 +1,5 @@
 import { SearchIcon } from "@chakra-ui/icons"
-import style from './InicialPage.module.css'
+import style from './InitialPage.module.css'
 import image from '../../assets/img/marriage.jpg'
 import { CategoryContainer, EventBox } from "../../components/index.js"
 
@@ -11,7 +11,7 @@ import {
    InputLeftAddon 
 } from "@chakra-ui/react"
 
-export const InicialPage = props => {
+export const InitialPage = props => {
    
    const event = {
       name: "Casamento dos Vasques",

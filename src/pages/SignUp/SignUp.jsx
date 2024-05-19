@@ -62,7 +62,7 @@ export const SignUp = props => {
                   variant={"ghost"}
                   colorScheme='gray'
                   width={"max-content"}
-                  onClick={() => {navigate("/home")}}>
+                  onClick={() => {navigate("/")}}>
                   Voltar para a Tela Inicial
                </Button>
                </ButtonGroup>

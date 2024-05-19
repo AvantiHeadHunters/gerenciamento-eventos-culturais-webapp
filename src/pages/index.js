@@ -2,10 +2,10 @@ import { FormCreateCategory, FormCreateEvent, FormCreateLocation } from "./Forms
 import { Login } from "./Login/Login";
 import { SignUp } from "./SignUp/SignUp";
 import { PageNotFound } from "./PageNotFound/PageNotFound";
-import {InicialPage} from './InicialPage/InicialPage.jsx';
+import {InitialPage} from './InitialPage/InitialPage.jsx';
 
 export {
-   InicialPage,
+   InitialPage,
    FormCreateCategory,
    FormCreateEvent, 
    FormCreateLocation, 
