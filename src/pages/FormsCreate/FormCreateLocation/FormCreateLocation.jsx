@@ -1,6 +1,6 @@
 import { Box, ButtonGroup,  Select,} from "@chakra-ui/react"
 import { useForm } from "react-hook-form"
-import style from './formcreatelocation.module.css'
+import style from './FormCreateLocation.module.css'
 
 import { States } from "./States"
 export const FormCreateLocation = props => {
@@ -53,7 +53,12 @@ export const FormCreateLocation = props => {
          justifyContent={"center"}
          marginTop={"15px"}
          >
-         <button className={style.button} style={{border: "2px solid red", color: "red"}}>Cancelar</button>
+            
+         <button 
+         className={style.button} 
+         style={{border: "2px solid red", color: "red"}}>
+            Cancelar
+         </button>
          <button className={style.button} type="submit">Confirmar</button>
          </ButtonGroup>
          

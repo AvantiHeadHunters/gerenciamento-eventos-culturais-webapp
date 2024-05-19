@@ -1,5 +1,5 @@
 import { Box, ButtonGroup, Flex, IconButton, Image } from "@chakra-ui/react"
-import style from './eventbox.module.css'
+import style from './EventBox.module.css'
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons"
 
 export const EventBox = ({event}) => {

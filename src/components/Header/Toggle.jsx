@@ -1,4 +1,4 @@
-import style from './header.module.css'
+import style from './Header.module.css'
 import { Box, IconButton, Stack} from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';

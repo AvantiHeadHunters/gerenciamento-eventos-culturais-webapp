@@ -1,7 +1,9 @@
 import { Divider, Flex } from "@chakra-ui/react"
-import style from './categorycontainer.module.css'
+import style from './CategoryContainer.module.css'
 export const CategoryContainer = props => {
+
    const {category} = props;
+   
    return (
       <Flex flexDirection={"column"} marginTop={"30px"}>
          <h1 className={style.title}>{category.name}</h1>

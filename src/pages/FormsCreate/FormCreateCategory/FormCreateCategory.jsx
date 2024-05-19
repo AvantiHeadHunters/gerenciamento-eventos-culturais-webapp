@@ -1,6 +1,6 @@
 import { Box, ButtonGroup, Flex } from "@chakra-ui/react"
 import { useForm } from "react-hook-form"
-import style from './formcreatecategory.module.css'
+import style from './FormCreateCategory.module.css'
 
 export const FormCreateCategory = props => {
    const {register, handleSubmit, formState: {errors,}} = useForm({
