@@ -13,15 +13,15 @@ export const NavBar = props => {
       className={style.NavBar} 
       display={{base: "none", md: "flex"}} >
          <NavBarItem to={"/home"} name={"Página Inicial"} logged/>
-         <NavBarItem to={"/conta"} name={"Sua Conta"} logged/>
+         <NavBarItem to={"/count"} name={"Sua Conta"} logged/>
          <NavBarItem to={"/logout"} name={"Logout"}  logout />
       </Flex> :
       <Flex 
       className={style.NavBar} 
       display={{base: "none", md: "flex"}} >
          <NavBarItem to={"/home"} name={"Explore"} />
-         <NavBarItem to={"/formevent"} name={"Criar"} />
-         <NavBarItem to={"/cadastro"} name={"Cadastre-se"} />
+         <NavBarItem to={"/form/create/event"} name={"Criar"} />
+         <NavBarItem to={"/signup"} name={"Cadastre-se"} />
          <NavBarItem to={"/login"} name={"Entrar"} bold />
       </Flex>
       }
