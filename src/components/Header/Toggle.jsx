@@ -1,4 +1,4 @@
-import style from './header.module.css'
+import style from './Header.module.css'
 import { Box, IconButton, Stack} from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 import { CloseIcon, HamburgerIcon } from '@chakra-ui/icons';
@@ -34,7 +34,7 @@ export const ToggleContent = props => {
          borderRadius={"12px"}>
 
             <ToggleItem to={"/home"} logged>Página Inicial</ToggleItem>
-            <ToggleItem to={"/conta"} logged>Sua Conta</ToggleItem>
+            <ToggleItem to={"/count"} logged>Sua Conta</ToggleItem>
             <ToggleItem to={"/logout"} logged>Logout</ToggleItem>
           </Stack>
          : 
@@ -47,9 +47,9 @@ export const ToggleContent = props => {
          padding={"5px"}
          border={"solid 1px #000"}
          borderRadius={"13px"} >
-            <ToggleItem to={"/"}>Explore</ToggleItem>
-            <ToggleItem to={"/formevent"}>Criar</ToggleItem>
-            <ToggleItem to={"/cadastro"}>Cadastrar</ToggleItem>
+            <ToggleItem to={"/home"}>Explore</ToggleItem>
+            <ToggleItem to={"/form/create/event"}>Criar</ToggleItem>
+            <ToggleItem to={"/signup"}>Cadastrar</ToggleItem>
             <ToggleItem to={"/login"}>Entrar</ToggleItem>
           </Stack>
           }

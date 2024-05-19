@@ -1,12 +1,17 @@
 import { SearchIcon } from "@chakra-ui/icons"
-import { Flex, IconButton, Input, InputGroup, InputLeftAddon } from "@chakra-ui/react"
-import style from './inicial.module.css'
-import { useState } from "react";
-import { EventBox } from "../../components/EventBox/EventBox";
+import style from './InicialPage.module.css'
 import image from '../../assets/img/marriage.jpg'
-import { CategoryContainer } from "../../components/CategoryContainer/CategoryContainer";
+import { CategoryContainer, EventBox } from "../../components/index.js"
 
-export const Inicial = props => {
+import { 
+   Flex, 
+   IconButton, 
+   Input, 
+   InputGroup, 
+   InputLeftAddon 
+} from "@chakra-ui/react"
+
+export const InicialPage = props => {
    
    const event = {
       name: "Casamento dos Vasques",

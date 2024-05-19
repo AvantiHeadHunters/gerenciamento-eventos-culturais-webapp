@@ -1,9 +1,9 @@
 import { Button, ButtonGroup, Flex } from '@chakra-ui/react'
-import style from './cadastro.module.css'
+import style from './SignUp.module.css'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
-export const Cadastro = props => {
+export const SignUp = props => {
       const navigate = useNavigate();
       const {register, handleSubmit, formState: {errors,}} = 
       useForm({defaultValues: {email: '', password: '', name: ''}})
