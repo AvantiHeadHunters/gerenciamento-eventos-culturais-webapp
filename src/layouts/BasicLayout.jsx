@@ -4,7 +4,7 @@ import { Footer, Header } from "../components"
 export const BasicLayout = props => {
    return (
       <>
-         <Header islogged={true} />
+         <Header islogged={false} />
             <Outlet />
          <Footer />
       </>
