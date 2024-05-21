@@ -1,9 +1,8 @@
 import { Divider, Flex } from "@chakra-ui/react";
-import style from './categorycontainer.module.css';
-import Proptypes from 'prop-types';
+import style from "./categorycontainer.module.css";
+import Proptypes from "prop-types";
 
 export const CategoryContainer = (props) => {
-
   const { name } = props.category;
 
   return (
@@ -15,18 +14,14 @@ export const CategoryContainer = (props) => {
         bg="black"
         border={"1px solid black "}
       />
-      <Flex
-        flexDirection={"row"}
-        flexWrap={"wrap"}
-        justifyContent={"center"}
-      >
+      <Flex flexDirection={"row"} flexWrap={"wrap"} justifyContent={"center"}>
         {props.children}
       </Flex>
     </Flex>
-  )
+  );
 };
 
 CategoryContainer.propTypes = {
   category: Proptypes.object,
-  children: Proptypes.node
+  children: Proptypes.node,
 }.isRequired;

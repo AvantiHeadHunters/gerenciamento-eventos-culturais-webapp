@@ -7,8 +7,8 @@ import {
   FormCreateCategory,
   FormCreateEvent,
   FormCreateLocation,
-  PageNotFound
-} from '../pages/index.js';
+  PageNotFound,
+} from "../pages/index.js";
 
 export const Routers = () => {
   return (
@@ -22,7 +22,6 @@ export const Routers = () => {
       <Route path="*" element={<PageNotFound />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/login" element={<Login />} />
-
     </Routes>
-  )
+  );
 };

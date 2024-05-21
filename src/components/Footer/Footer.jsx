@@ -1,7 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
-import style from './footer.module.css';
+import style from "./footer.module.css";
 import { Link } from "react-router-dom";
-import Proptypes from 'prop-types';
+import Proptypes from "prop-types";
 
 export const Footer = () => {
   return (
@@ -12,15 +12,13 @@ export const Footer = () => {
         flexDirection={"row"}
         justifyContent={"space-around"}
         sx={{
-          '@media (max-width: 520px)':
-          {
+          "@media (max-width: 520px)": {
             fontSize: "12",
-            flexDirection: 'column-reverse',
-            alignItems: "center"
-          }
+            flexDirection: "column-reverse",
+            alignItems: "center",
+          },
         }}
       >
-
         <div>
           <div className={style.bold}>
             EVENT <span className={style.span}>&#10040;</span> HUNTERS <br />
@@ -30,20 +28,18 @@ export const Footer = () => {
 
         <Box
           marginRight={"30%"}
-          sx={{ "@media (max-width: 650px) ": { marginBottom: '10px' } }}
+          sx={{ "@media (max-width: 650px) ": { marginBottom: "10px" } }}
         >
-
           <h1 className={style.bold}>Links Úteis</h1>
 
           <ItemFooter to={"/sobrenos"} text={"Sobre Nós"} />
           <ItemFooter to={"/pagamento"} text={"Pagamento"} />
           <ItemFooter to={"/contato"} text={"Entre em Contato"} />
-
         </Box>
       </Flex>
     </footer>
-  )
-}
+  );
+};
 
 export const ItemFooter = (props) => {
   const { to, text } = props;
@@ -52,10 +48,10 @@ export const ItemFooter = (props) => {
     <Link to={to}>
       <h1>{text}</h1>
     </Link>
-  )
-}
+  );
+};
 
 ItemFooter.propTypes = {
   to: Proptypes.string,
-  text: Proptypes.string
+  text: Proptypes.string,
 }.isRequired;
