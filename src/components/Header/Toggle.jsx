@@ -18,10 +18,10 @@ export const Toggle = ({isOpen, onToggle}) => {
 }
 
 export const ToggleContent = props => {
-   const {islogged} = props;
+   const {isLogged} = props;
    return (
       <Box className={style.Toggle} border={"1px black solid"}>
-        {islogged ?  
+        {isLogged ?  
 
          <Stack 
          position={"absolute"} 

@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import style from './header.module.css'
 
 export const NavBar = props => {
-   const {islogged} = props;
+   const {isLogged} = props;
    const {isOpen, onToggle} = useDisclosure();
    return (
       <>
-      { islogged ? 
+      { isLogged ? 
       <Flex 
       className={style.NavBar} 
       display={{base: "none", md: "flex"}} >
