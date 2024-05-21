@@ -1,5 +1,5 @@
 import { Divider, Flex } from "@chakra-ui/react"
-import style from './CategoryContainer.module.css'
+import style from './categorycontainer.module.css'
 export const CategoryContainer = props => {
 
    const {category} = props;

@@ -1,7 +1,7 @@
 import { Flex, HStack, useDisclosure } from "@chakra-ui/react";
 import { Toggle, ToggleContent } from "./Toggle";
 import { Link } from "react-router-dom";
-import style from './Header.module.css'
+import style from './header.module.css'
 
 export const NavBar = props => {
    const {islogged} = props;
