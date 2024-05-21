@@ -1,39 +1,43 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lexend+Deca:wght@100..900&family=Outfit:wght@729&display=swap");
-
 .Header {
-  padding: 10px;
-  margin-bottom: 30px;
+  padding: 30px;
   display: flex;
   flex-direction: "row";
   align-items: "baseline";
   justify-content: space-between;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
 .Header h1 {
-  font-family: "Lexend Deca", sans-serif;
-  font-weight: bold;
+  font-family: var(--font-secondary);
+  font-weight: 900;
   font-size: 2em;
 }
+
 .span {
-  color: #d7e258;
+  color: var(--color-primary);
 }
+
 .NavBar {
-  justify-self: center;
+  display: flex;
+  align-items: center;
 }
 
 .NavBarItem {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-primary);
   margin: 5px;
   padding: 10px;
   padding-left: 7px;
   padding-right: 7px;
   font-weight: 500;
-  border: solid 1px white;
+  border: solid 1px var(--grey-5);
   border-radius: 14px;
 }
 
 .NavBarItem:hover {
-  background-color: rgb(193, 191, 188);
+  background-color: var(--grey-3);
   transition: 400ms;
 }
 
@@ -42,25 +46,26 @@
 }
 
 .boldbutton {
-  background-color: black;
-  border: solid 1px white;
+  background-color: var(--grey-1);
+  border: solid 1px var(--grey-5);
   border-radius: 14px;
-  color: white;
+  color: var(--grey-5);
 }
 
 .solid {
-  border: 2px solid #000;
+  border: 2px solid var(--grey-1);
 }
 
 @media (max-width: 760px) {
   .Header h1 {
     margin: 10px;
-    font-family: "Lexend Deca", sans-serif;
+    font-family: var(--font-primary);
     font-size: 20px;
+    font-weight: 900;
   }
 
   .Toggle {
-    font-family: "Inter", serif;
+    font-family: var(--font-secondary);
     font-size: 15px;
     font-weight: bold;
     margin-bottom: 50px;

@@ -13,12 +13,13 @@ export const CategoryContainer = (props) => {
         margin={"10px 0px"}
         orientation="horizontal"
         bg="black"
-        border={"1px solid black "} />
-
+        border={"1px solid black "}
+      />
       <Flex
         flexDirection={"row"}
         flexWrap={"wrap"}
-        justifyContent={"center"}>
+        justifyContent={"center"}
+      >
         {props.children}
       </Flex>
     </Flex>

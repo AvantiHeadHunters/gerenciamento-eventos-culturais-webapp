@@ -8,8 +8,8 @@ import {
   IconButton,
   Input,
   InputGroup,
-  InputLeftAddon
-} from "@chakra-ui/react"
+  InputLeftAddon,
+} from "@chakra-ui/react";
 
 export const InitialPage = () => {
 
@@ -24,15 +24,21 @@ export const InitialPage = () => {
   const category = {
     id: 1,
     name: "Casamentos",
-    description: "Casamentos diversos. Venha celebrar o matrimônio"
-  }
-  return (
+    description: "Casamentos diversos. Venha celebrar o matrimônio",
+  };
 
+  return (
     <div className={style.container}>
-      <Flex flexDirection={"column"} alignItems={"center"} className={style.Search}>
-        <h1 className={style.title} >Nós te ajudamos a encontrar seu próximo evento</h1>
+      <Flex
+        flexDirection={"column"}
+        alignItems={"center"}
+        className={style.search}
+      >
+        <h1 className={style.title}>
+          Nós te ajudamos a encontrar seu próximo evento
+        </h1>
         <InputGroup
-          width={"80%"}
+          width={"40%"}
           margin={"auto"}
           marginTop={"20px"}
           marginBottom={"10px"}
@@ -46,7 +52,7 @@ export const InitialPage = () => {
             placeholder="Pesquise seu evento"
           />
         </InputGroup>
-        <button className={style.SearchButton}>Pesquisar</button>
+        <button className={style.searchButton}>Pesquisar</button>
       </Flex>
       <CategoryContainer category={category}>
         <EventBox event={event} />
@@ -56,5 +62,5 @@ export const InitialPage = () => {
         <EventBox event={event} />
       </CategoryContainer>
     </div>
-  )
+  );
 };

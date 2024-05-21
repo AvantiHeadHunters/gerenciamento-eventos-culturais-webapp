@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import style from './header.module.css';
 import Proptypes from 'prop-types';
 
-export const NavBar = props => {
+export const NavBar = (props) => {
   const { isLogged } = props;
   const { isOpen, onToggle } = useDisclosure();
   return (
