@@ -37,7 +37,12 @@ export const InitialPage = (props) => {
           Nós te ajudamos a encontrar seu próximo evento
         </h1>
         <InputGroup
-          width={"40%"}
+          sx={{
+            width: "80%",
+            "@media (min-width: 750px)": {
+              width: "40%",
+            },
+          }}
           margin={"auto"}
           marginTop={"20px"}
           marginBottom={"10px"}
