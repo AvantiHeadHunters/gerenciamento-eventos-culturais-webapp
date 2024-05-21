@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form"
 import style from './FormCreateLocation.module.css'
 
 import { States } from "./States"
-export const FormCreateLocation = props => {
+export const FormCreateLocation = () => {
 
    const {register, handleSubmit, formState: {errors,}} =
     useForm({defaultValues:{
@@ -56,7 +56,8 @@ export const FormCreateLocation = props => {
             
          <button 
          className={style.button} 
-         style={{border: "2px solid red", color: "red"}}>
+         style={{border: "2px solid red", color: "red"}}
+         >
             Cancelar
          </button>
          <button className={style.button} type="submit">Confirmar</button>
@@ -65,4 +66,4 @@ export const FormCreateLocation = props => {
       </form>
       </div>
    )
-}
+};

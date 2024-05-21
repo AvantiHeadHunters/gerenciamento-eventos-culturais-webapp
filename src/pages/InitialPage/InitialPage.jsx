@@ -1,6 +1,6 @@
 import { SearchIcon } from "@chakra-ui/icons";
-import style from "./InitialPage.module.css";
-import image from "../../assets/img/marriage.jpg";
+import style from './InitialPage.module.css';
+import image from '../../assets/img/marriage.jpg';
 import { CategoryContainer, EventBox } from "../../components/index.js";
 
 import {
@@ -11,7 +11,8 @@ import {
   InputLeftAddon,
 } from "@chakra-ui/react";
 
-export const InitialPage = (props) => {
+export const InitialPage = () => {
+
   const event = {
     name: "Casamento dos Vasques",
     description: "Venha prestigiar o casamento de uma família muito querida",
