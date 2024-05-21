@@ -1,4 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lexend+Deca:wght@100..900&family=Outfit:wght@729&display=swap");
+
 :root {
+  --color-primary: #d7e258;
+
   --grey-1: #202020;
   --grey-2: #606060;
   --grey-3: #989898;
@@ -8,6 +12,7 @@
   --line-height: 150%;
 
   --font-primary: "Inter", sans-serif;
+  --font-secondary: "Lexend Deca", sans-serif;
 }
 
 body {

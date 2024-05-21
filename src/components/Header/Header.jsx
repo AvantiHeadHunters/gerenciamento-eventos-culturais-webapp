@@ -20,7 +20,6 @@ export const Header = props => {
             <h1>
                EVENT <span className={style.span}>&#10040;</span><br/> HUNTERS
             </h1> 
-            <hr className={style.solid}/>
          </Link>
       }
          <NavBar {...props} /> 
