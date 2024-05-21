@@ -23,5 +23,5 @@ export const GlobalProvider = ({ children }) => {
 };
 
 GlobalProvider.propTypes = {
-  children: Proptypes.node
+  children: Proptypes.node,
 }.isRequired;

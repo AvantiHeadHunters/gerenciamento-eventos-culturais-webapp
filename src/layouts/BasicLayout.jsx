@@ -8,5 +8,5 @@ export const BasicLayout = () => {
       <Outlet />
       <Footer />
     </>
-  )
+  );
 };
