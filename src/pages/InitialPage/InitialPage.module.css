@@ -1,50 +1,37 @@
 .container {
   margin-bottom: 20px;
 }
-.Search {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  position: relative;
-  background-image: url("../../../src/assets/img/image.png");
+
+.search {
+  background-image: url("https://images.unsplash.com/photo-1540039297186-746086ab730b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
   background-size: auto;
   background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
-  height: 15em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
 }
 
-.Search h1 {
+.search h1 {
   font-family: "Inter", sans-serif;
   font-weight: bold;
-  font-size: 2em;
+  font-size: clamp(1.5rem, 3vw, 3em);
   text-align: center;
   padding: 10px;
-  color: black;
-  backdrop-filter: blur(10px) saturate(70%);
+  color: var(--grey-1);
 }
-.contentSearch {
+
+/* .contentSearch {
   opacity: unset;
-}
+} */
 
-/**.background{
-background-image: url("../../../src/assets/img/image.png");
-background-size: auto;
-background-repeat: no-repeat;
-background-size: cover;
-width: 100%;
-height: 100%;
-display: flex;
-z-index: -1;
-position: relative;
-opacity: 0.8;
-}*/
-
-.SearchButton {
-  background-color: black;
-  border: solid 1px white;
+.searchButton {
+  background-color: var(--grey-1);
+  border: solid 1px var(--grey-5);
   border-radius: 14px;
-  color: white;
-  font-family: "Inter", sans-serif;
+  color: var(--grey-5);
   width: 150px;
   padding: 10px;
 }
@@ -54,21 +41,17 @@ opacity: 0.8;
     margin-top: 70px;
   }
 
-  .Search {
+  .search {
     top: 30px;
-  }
-  .Search h1 {
-    display: none;
   }
 
   .background {
     display: none !important;
   }
 
-  .SearchButton {
+  .searchButton {
     width: 70px;
     margin-top: 5px;
-    font-family: "Inter", sans-serif;
     font-size: 10px;
   }
 }
