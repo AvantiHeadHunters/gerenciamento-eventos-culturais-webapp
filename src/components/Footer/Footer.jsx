@@ -1,5 +1,5 @@
 import { Box, Flex } from "@chakra-ui/react"
-import style from './Footer.module.css'
+import style from './footer.module.css'
 import { Link } from "react-router-dom"
 export const Footer = props => {
    return (

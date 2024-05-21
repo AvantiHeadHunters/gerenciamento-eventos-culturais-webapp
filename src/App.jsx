@@ -1,15 +1,12 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { BrowserRouter } from "react-router-dom";
+import { useContext } from "react";
 import { Routers } from "./route/Route.jsx";
+import { GlobalContext } from "./providers/globalContext.jsx";
 
 const App = () => {
-  return (
-    <ChakraProvider>
-      <BrowserRouter>
-         <Routers />
-      </BrowserRouter>
-    </ChakraProvider>
-  );
+  const { testFunction } = useContext(GlobalContext);
+
+  testFunction();
+  return <Routers />;
 };
 
 export default App;

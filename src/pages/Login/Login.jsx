@@ -1,5 +1,5 @@
 import { Button, ButtonGroup, Flex, Text } from '@chakra-ui/react'
-import style from './Login.module.css'
+import style from './login.module.css'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
