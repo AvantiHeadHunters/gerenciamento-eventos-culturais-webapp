@@ -10,7 +10,7 @@ export const Footer = () => {
         textColor={"white"}
         className={style.Footer}
         flexDirection={"row"}
-        justifyContent={"space-around"}
+        justifyContent={"space-between"}
         sx={{
           "@media (max-width: 520px)": {
             fontSize: "12",
@@ -20,21 +20,21 @@ export const Footer = () => {
         }}
       >
         <div>
-          <div className={style.bold}>
-            EVENT <span className={style.span}>&#10040;</span> HUNTERS <br />
-          </div>
-          Head Hunters &#169; Todos os direitos reservados
+          <p className={style.logo}>
+            EVENT <span className={style.span}>&#10040;</span> HUNTERS
+          </p>
+          <p className={style.copyright}>
+            HEAD Hunters &#169; Todos os direitos reservados
+          </p>
         </div>
 
         <Box
           marginRight={"30%"}
           sx={{ "@media (max-width: 650px) ": { marginBottom: "10px" } }}
         >
-          <h1 className={style.bold}>Links Úteis</h1>
-
-          <ItemFooter to={"/sobrenos"} text={"Sobre Nós"} />
-          <ItemFooter to={"/pagamento"} text={"Pagamento"} />
-          <ItemFooter to={"/contato"} text={"Entre em Contato"} />
+          <ItemFooter text={"Sobre Nós"} />
+          <ItemFooter text={"Pagamento"} />
+          <ItemFooter text={"Entre em Contato"} />
         </Box>
       </Flex>
     </footer>
