@@ -24,6 +24,7 @@ git pull origin develop
 
 ```
 git fetch
+git switch [branch_que_voce_quer_puxar]
 ```
 
 ## Sobre

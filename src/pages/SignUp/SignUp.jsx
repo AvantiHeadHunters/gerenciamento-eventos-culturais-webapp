@@ -23,9 +23,9 @@ export const SignUp = props => {
             <label>Nome</label>
             <input type="text" {...register("name", {required: "Insira o nome"})}/>
             <label>Email</label>
-            <input type="text" {...register("email", {required: "Insira o email"})}/>
+            <input type="email" {...register("email", {required: "Insira o email"})}/>
             <label>Senha</label>
-            <input type={"text"} {...register("password", {required: "Insira a senha", pattern: /\S+@\S+\.\S+/})}/>
+            <input type={"password"} {...register("password", {required: "Insira a senha", pattern: /\S+@\S+\.\S+/})}/>
 
             {(errors.name || errors.email || errors.password ) 
             && 
