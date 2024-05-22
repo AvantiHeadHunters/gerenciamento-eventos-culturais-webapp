@@ -1,0 +1,16 @@
+.Box {
+   font-family: "Inter", sans-serif;
+   border: solid 1px rgb(255, 255, 255);
+   border-radius: 14px;
+   box-shadow: 4px 3px 9px 4px rgba(0,0,0,0.75);
+   padding: 10px 20px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-direction: row;
+ }
+
+ .Box h1{
+   font-family: "Inter", sans-serif;
+   font-size: 20px;
+}

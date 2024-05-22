@@ -34,12 +34,9 @@ export const FormCreateCategory = () => {
           type="text"
           {...register("image", { required: "Insira a Imagem da Categoria" })}
         />
-          {(errors.name 
-            || errors.description 
-            || errors.image) && 
-            <span style={errorStyle}>
-               Preencha todos os campos
-            </span>}
+        {(errors.name || errors.description || errors.image) && (
+          <span style={errorStyle}>Preencha todos os campos</span>
+        )}
         <ButtonGroup
           gap={4}
           flexDirection={"row"}
@@ -62,9 +59,10 @@ export const FormCreateCategory = () => {
 };
 
 const errorStyle = {
-   fontFamily: "Inter", 
-   margin: "10px 0", 
-   color: "red", 
-   fontWeight: "bold", 
-   fontSize: 15, 
-   textAlign: "center"}
+  fontFamily: "Inter",
+  margin: "10px 0",
+  color: "red",
+  fontWeight: "bold",
+  fontSize: 15,
+  textAlign: "center",
+};
