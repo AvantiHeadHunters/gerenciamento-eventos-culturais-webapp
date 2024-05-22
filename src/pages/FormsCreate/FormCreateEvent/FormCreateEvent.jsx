@@ -41,14 +41,13 @@ export const FormCreateEvent = () => {
           type="text"
           {...register("location", { required: "Insira o local" })}
         />
-         {(errors.name 
-            || errors.description 
-            || errors.category_id
-            || errors.location 
-            || errors.date) && 
-         <span style={errorStyle}>
-            Preencha todos os campos
-         </span>}
+        {(errors.name ||
+          errors.description ||
+          errors.category_id ||
+          errors.location ||
+          errors.date) && (
+          <span style={errorStyle}>Preencha todos os campos</span>
+        )}
 
         <ButtonGroup
           gap={4}
@@ -72,9 +71,10 @@ export const FormCreateEvent = () => {
 };
 
 const errorStyle = {
-   fontFamily: "Inter", 
-   margin: "10px 0", 
-   color: "red", 
-   fontWeight: "bold", 
-   fontSize: 15, 
-   textAlign: "center"}
+  fontFamily: "Inter",
+  margin: "10px 0",
+  color: "red",
+  fontWeight: "bold",
+  fontSize: 15,
+  textAlign: "center",
+};
