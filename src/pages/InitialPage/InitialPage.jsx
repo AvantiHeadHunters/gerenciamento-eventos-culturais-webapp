@@ -14,6 +14,7 @@ import {
 export const InitialPage = props => {
    
    const event = {
+      id: 1,
       name: "Casamento dos Vasques",
       description: "Venha prestigiar o casamento de uma família muito querida",
       date:  new Date().toLocaleTimeString(),

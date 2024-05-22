@@ -1,9 +1,10 @@
 import { Box, ButtonGroup, Flex, IconButton, Image } from "@chakra-ui/react"
 import style from './eventbox.module.css'
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons"
+import { useNavigate } from "react-router-dom"
 
 export const EventBox = ({event}) => {
-
+   const navigate  = useNavigate();
    return (
       <Box className={style.Box}>
          <Image src={event.image} 
@@ -29,7 +30,9 @@ export const EventBox = ({event}) => {
 
                   <IconButton 
                      icon={<EditIcon />} 
-                     size={["xs", "sm", "md"]}/>
+                     size={["xs", "sm", "md"]} 
+                     onClick={() => navigate("/form/edit/event", { state: { id: event.id } })}
+                     />
 
                   <IconButton 
                      icon={<DeleteIcon />} 

@@ -1,4 +1,6 @@
 import { FormCreateCategory, FormCreateEvent, FormCreateLocation } from "./FormsCreate";
+import { FormEditCategory, FormEditEvent, FormEditLocation } from "./FormsEdit";
+import {Dashboard} from './Dashboard/Dashboard.jsx'
 import { Login } from "./Login/Login";
 import { SignUp } from "./SignUp/SignUp";
 import { PageNotFound } from "./pagenotfound/PageNotFound.jsx";
@@ -11,5 +13,9 @@ export {
    FormCreateLocation, 
    Login, 
    SignUp, 
-   PageNotFound
+   PageNotFound,
+   FormEditCategory, 
+   FormEditEvent, 
+   FormEditLocation,
+   Dashboard
 }

@@ -7,10 +7,15 @@ import {
    FormCreateCategory,
    FormCreateEvent, 
    FormCreateLocation,
-   PageNotFound
+   FormEditCategory,
+   FormEditEvent, 
+   FormEditLocation,
+   PageNotFound,
+   Dashboard
 } from '../pages/index.js'
 
 export const Routers = props => {
+   const name = "Italo";
    return (
       <Routes>
          <Route path="/" element={<BasicLayout />}>
@@ -18,6 +23,11 @@ export const Routers = props => {
             <Route path="/form/create/event" element={<FormCreateEvent />} />
             <Route path="/form/create/category" element={<FormCreateCategory/>}/>
             <Route path="/form/create/location" element={<FormCreateLocation/>} />
+            <Route path="/form/edit/event" element={<FormEditEvent />} />
+            <Route path="/form/edit/category" element={<FormEditCategory/>}/>
+            <Route path="/form/edit/location" element={<FormEditLocation/>} />
+            <Route path="/explore" element={<Dashboard/>}/>
+
          </Route>
          <Route path="*" element={<PageNotFound/>} />
          <Route path="/signup" element={<SignUp/>}/>
