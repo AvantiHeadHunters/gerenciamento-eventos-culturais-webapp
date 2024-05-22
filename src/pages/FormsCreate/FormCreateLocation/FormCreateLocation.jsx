@@ -64,15 +64,14 @@ export const FormCreateLocation = () => {
             required: "Insira o link do maps do local",
           })}
         />
-          {(errors.name
-             ||  errors.address
-             || errors.cep
-             || errors.state
-             || errors.city) && 
-             <span style={errorStyle}>
-               Preencha todos os campos
-            </span>}
-         
+        {(errors.name ||
+          errors.address ||
+          errors.cep ||
+          errors.state ||
+          errors.city) && (
+          <span style={errorStyle}>Preencha todos os campos</span>
+        )}
+
         <ButtonGroup
           gap={4}
           flexDirection={"row"}
@@ -95,9 +94,10 @@ export const FormCreateLocation = () => {
 };
 
 const errorStyle = {
-   fontFamily: "Inter", 
-   margin: "10px 0", 
-   color: "red", 
-   fontWeight: "bold", 
-   fontSize: 15, 
-   textAlign: "center"}
+  fontFamily: "Inter",
+  margin: "10px 0",
+  color: "red",
+  fontWeight: "bold",
+  fontSize: 15,
+  textAlign: "center",
+};
