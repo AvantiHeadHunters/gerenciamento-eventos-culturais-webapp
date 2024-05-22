@@ -2,15 +2,25 @@ import { Button, ButtonGroup, Flex } from "@chakra-ui/react";
 import style from "./SignUp.module.css";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { GlobalContext } from "../../providers/globalContext";
 
 export const SignUp = () => {
+  const { registerUserRequest } = useContext(GlobalContext);
+
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ defaultValues: { email: "", password: "", name: "" } });
-  const onsubmit = (data) => console.log(data);
+
+  const onsubmit = (data) => {
+    console.log(data);
+    registerUserRequest(data);
+    navigate("/login");
+  };
 
   return (
     <Flex className={style.Container} flexDirection={"row"}>
@@ -40,7 +50,7 @@ export const SignUp = () => {
             type={"password"}
             {...register("password", {
               required: "Insira a senha",
-              pattern: /\S+@\S+\.\S+/,
+              // pattern: /\S+@\S+\.\S+/,
             })}
           />
 

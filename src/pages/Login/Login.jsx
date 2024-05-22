@@ -2,15 +2,24 @@ import { Button, ButtonGroup, Flex, Text } from "@chakra-ui/react";
 import style from "./login.module.css";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { GlobalContext } from "../../providers/globalContext";
 
 export const Login = () => {
+  const { loginRequest } = useContext(GlobalContext);
+
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ defaultValues: { email: "", password: "" } });
-  const onsubmit = (data) => console.log(data);
+
+  const onsubmit = (data) => {
+    loginRequest(data);
+    console.log(data);
+  };
 
   return (
     <Flex className={style.Container} flexDirection={"row"}>
