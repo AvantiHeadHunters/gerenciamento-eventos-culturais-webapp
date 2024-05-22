@@ -35,6 +35,7 @@ export const FormEditEvent = props => {
 
          {(errors.name 
             || errors.description 
+            || errors.category_id
             || errors.location 
             || errors.date) && 
             <span style={errorStyle}>

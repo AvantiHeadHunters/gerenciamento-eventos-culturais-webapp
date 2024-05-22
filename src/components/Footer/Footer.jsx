@@ -1,49 +1,57 @@
-import { Box, Flex } from "@chakra-ui/react"
-import style from './footer.module.css'
-import { Link } from "react-router-dom"
-export const Footer = props => {
-   return (
-      <footer>
-         <Flex
-          textColor={"white"}
-          className={style.Footer}
-          flexDirection={"row"} 
-          justifyContent={"space-around"}
-          sx={{'@media (max-width: 520px)':
-            {fontSize: "12" , 
-               flexDirection: 'column-reverse', 
-               alignItems: "center"}}}>
+import { Box, Flex } from "@chakra-ui/react";
+import style from "./footer.module.css";
+import { Link } from "react-router-dom";
+import Proptypes from "prop-types";
 
-            <div>
-               <div className={style.bold}>
-               EVENT <span className={style.span}>&#10040;</span> HUNTERS <br/>
-               </div>
-                  Head Hunters &#169; Todos os direitos reservados
-            </div>
+export const Footer = () => {
+  return (
+    <footer>
+      <Flex
+        textColor={"white"}
+        className={style.Footer}
+        flexDirection={"row"}
+        justifyContent={"space-around"}
+        sx={{
+          "@media (max-width: 520px)": {
+            fontSize: "12",
+            flexDirection: "column-reverse",
+            alignItems: "center",
+          },
+        }}
+      >
+        <div>
+          <div className={style.bold}>
+            EVENT <span className={style.span}>&#10040;</span> HUNTERS <br />
+          </div>
+          Head Hunters &#169; Todos os direitos reservados
+        </div>
 
-         <Box 
-            marginRight={"30%"} 
-            sx={{"@media (max-width: 650px) " : {marginBottom: '10px'}}} >
+        <Box
+          marginRight={"30%"}
+          sx={{ "@media (max-width: 650px) ": { marginBottom: "10px" } }}
+        >
+          <h1 className={style.bold}>Links Úteis</h1>
 
-             <h1 className={style.bold}>Links Úteis</h1>
+          <ItemFooter to={"/sobrenos"} text={"Sobre Nós"} />
+          <ItemFooter to={"/pagamento"} text={"Pagamento"} />
+          <ItemFooter to={"/contato"} text={"Entre em Contato"} />
+        </Box>
+      </Flex>
+    </footer>
+  );
+};
 
-            <ItemFooter to={"/sobrenos"} text={"Sobre Nós"}/>
-            <ItemFooter to={"/pagamento"} text={"Pagamento"} />
-            <ItemFooter to={"/contato"} text={"Entre em Contato"} />
+export const ItemFooter = (props) => {
+  const { to, text } = props;
 
-         </Box>
-         </Flex>
-      </footer>
-   )
-}
+  return (
+    <Link to={to}>
+      <h1>{text}</h1>
+    </Link>
+  );
+};
 
-export const ItemFooter = props => {
-   const {to, text} = props;
-   return (
-      <Link to={to}>
-         <h1>{text}</h1>
-      </Link>      
-   )
-
-
-}
+ItemFooter.propTypes = {
+  to: Proptypes.string,
+  text: Proptypes.string,
+}.isRequired;
