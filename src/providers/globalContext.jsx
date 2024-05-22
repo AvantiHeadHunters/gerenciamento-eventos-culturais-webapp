@@ -7,14 +7,17 @@ export const GlobalContext = createContext({});
 
 export const GlobalProvider = ({ children }) => {
   const [events, setEvents] = useState(null);
+  const [locations, setLocations] = useState([]);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     listEventsRequest();
+    listLocationsRequest();
   }, []);
 
-  console.log(events);
+  // console.log(events);
+  console.log(locations);
 
   const loginRequest = async (formData) => {
     try {
@@ -41,13 +44,51 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const listEventsRequest = async () => {
-    const { data } = await api.get("/events");
-    setEvents(data);
+    try {
+      const { data } = await api.get("/events");
+      setEvents(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const createEventRequest = async (formData) => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+      await api.post("/event", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("Contato cadastrado com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const listLocationsRequest = async () => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+      const { data } = await api.get("/locations", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setLocations(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <GlobalContext.Provider
-      value={{ events, loginRequest, registerUserRequest }}
+      value={{
+        events,
+        loginRequest,
+        registerUserRequest,
+        createEventRequest,
+        locations,
+      }}
     >
       {children}
     </GlobalContext.Provider>

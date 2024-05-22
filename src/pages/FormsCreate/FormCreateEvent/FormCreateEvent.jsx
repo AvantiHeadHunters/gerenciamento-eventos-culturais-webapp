@@ -1,8 +1,12 @@
 import { ButtonGroup } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import style from "./FormCreateEvent.module.css";
+import { useContext } from "react";
+import { GlobalContext } from "../../../providers/globalContext";
 
 export const FormCreateEvent = () => {
+  const { createEventRequest } = useContext(GlobalContext);
+
   const {
     register,
     handleSubmit,
@@ -13,9 +17,14 @@ export const FormCreateEvent = () => {
       description: "",
       date: "",
       location: "",
+      image: "",
     },
   });
-  const onsubmit = (data) => console.log(data);
+
+  const onsubmit = (data) => {
+    createEventRequest(data);
+    console.log(data);
+  };
 
   return (
     <div className={style.formContainer}>
@@ -25,11 +34,13 @@ export const FormCreateEvent = () => {
         <label>Nome</label>
         <input
           type="text"
+          placeholder="Digite o nome do evento"
           {...register("name", { required: "Insira o nome do evento" })}
         />
         <label>Descrição</label>
         <textarea
           {...register("description", { required: "Insira o nome do evento" })}
+          placeholder="Digite uma descrição para o evento"
         />
         <label>Data</label>
         <input
@@ -41,11 +52,18 @@ export const FormCreateEvent = () => {
           type="text"
           {...register("location", { required: "Insira o local" })}
         />
+        <label>Imagem</label>
+        <input
+          type="text"
+          placeholder="Digite o link de uma imagem"
+          {...register("image", { required: "Insira o link de uma imagem" })}
+        />
         {(errors.name ||
           errors.description ||
           errors.category_id ||
           errors.location ||
-          errors.date) && (
+          errors.date ||
+          errors.image) && (
           <span style={errorStyle}>Preencha todos os campos</span>
         )}
 
