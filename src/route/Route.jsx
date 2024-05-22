@@ -11,6 +11,7 @@ import {
   FormEditEvent,
   FormEditLocation,
   PageNotFound,
+  Dashboard,
 } from "../pages/index.js";
 
 export const Routers = () => {
@@ -19,6 +20,7 @@ export const Routers = () => {
       <Route path="/" element={<BasicLayout />}>
         <Route index element={<InitialPage />} />
         <Route path="/form/create/event" element={<FormCreateEvent />} />
+        <Route path="/explore" element={<Dashboard/>} />
         <Route path="/form/create/category" element={<FormCreateCategory />} />
         <Route path="/form/create/location" element={<FormCreateLocation />} />
         <Route path="/form/edit/event" element={<FormEditEvent />} />

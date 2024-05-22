@@ -4,7 +4,7 @@
   flex-direction: "row";
   align-items: "baseline";
   justify-content: space-between;
-  position: fixed;
+  position: relative;
   z-index: 99;
   width: 100%;
   transition: background-color 0.3s ease;

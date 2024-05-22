@@ -5,7 +5,7 @@ export const BasicLayout = () => {
   return (
     <>
       <Header isLogged={false} />
-      <Outlet />
+         <Outlet />
       <Footer />
     </>
   );

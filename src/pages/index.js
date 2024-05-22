@@ -13,6 +13,7 @@ import { Login } from "./Login/Login";
 import { SignUp } from "./SignUp/SignUp";
 import { PageNotFound } from "./pagenotfound/PageNotFound.jsx";
 import { InitialPage } from "./InitialPage/InitialPage.jsx";
+import { Dashboard } from "./Dashboard/Dashboard.jsx"
 
 export {
   InitialPage,
@@ -25,4 +26,5 @@ export {
   Login,
   SignUp,
   PageNotFound,
+  Dashboard
 };
