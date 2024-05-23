@@ -1,10 +1,13 @@
-import { Outlet } from "react-router-dom";
-import { Footer, Header } from "../components";
+import { Outlet, useLocation } from "react-router-dom";
+import { Footer, Header, HomePageHeader } from "../components";
 
 export const BasicLayout = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
   return (
     <>
-      <Header />
+      {isHomePage ? <HomePageHeader /> : <Header />}
       <Outlet />
       <Footer />
     </>
