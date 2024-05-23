@@ -83,9 +83,9 @@ export const SearchCategory = () => {
           <Flex className={style.Result}>
             <ul>
               {filteredCategories.map((category) => (
-                <li key={category.id}>
-                  <CategoryBox category={category.name} />
-                </li>
+                // <li>
+                <CategoryBox key={category.id} category={category} />
+                // </li>
               ))}
             </ul>
           </Flex>
