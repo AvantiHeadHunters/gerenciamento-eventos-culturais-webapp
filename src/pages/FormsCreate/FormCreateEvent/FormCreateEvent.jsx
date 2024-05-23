@@ -3,24 +3,29 @@ import { useForm } from "react-hook-form";
 import style from "./FormCreateEvent.module.css";
 import { useContext } from "react";
 import { GlobalContext } from "../../../providers/globalContext";
+import { SelectCategory, SelectLocation } from "../../../components/index.js";
 
 export const FormCreateEvent = () => {
-  const { createEventRequest } = useContext(GlobalContext);
+  const { createEventRequest, loggedUser, categories, locations } =
+    useContext(GlobalContext);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
+    control,
   } = useForm({
     defaultValues: {
       name: "",
       description: "",
       date: "",
-      location: "",
+      locationId: "",
+      categoryId: "",
       image: "",
+      userId: Number(loggedUser.isAdmin ? loggedUser.userId : null),
     },
   });
-
+  console.log();
   const onsubmit = (data) => {
     createEventRequest(data);
     console.log(data);
@@ -33,6 +38,7 @@ export const FormCreateEvent = () => {
 
         <label>Nome</label>
         <input
+          className={style.input}
           type="text"
           placeholder="Digite o nome do evento"
           {...register("name", { required: "Insira o nome do evento" })}
@@ -42,19 +48,32 @@ export const FormCreateEvent = () => {
           {...register("description", { required: "Insira o nome do evento" })}
           placeholder="Digite uma descrição para o evento"
         />
+
+        <label>Categoria</label>
+
+        <SelectCategory
+          control={control}
+          category={categories}
+          name={"categoryId"}
+        />
         <label>Data</label>
+
         <input
+          className={style.input}
           type="date"
           {...register("date", { required: "Insira o nome do evento" })}
         />
         <label>Local</label>
-        <input
-          type="text"
-          {...register("location", { required: "Insira o local" })}
+
+        <SelectLocation
+          control={control}
+          location={locations}
+          name={"locationId"}
         />
         <label>Imagem</label>
         <input
           type="text"
+          className={style.input}
           placeholder="Digite o link de uma imagem"
           {...register("image", { required: "Insira o link de uma imagem" })}
         />
@@ -63,7 +82,8 @@ export const FormCreateEvent = () => {
           errors.category_id ||
           errors.location ||
           errors.date ||
-          errors.image) && (
+          errors.image ||
+          errors.userId) && (
           <span style={errorStyle}>Preencha todos os campos</span>
         )}
 

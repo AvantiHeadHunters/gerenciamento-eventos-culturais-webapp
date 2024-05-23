@@ -4,12 +4,16 @@ import { Footer } from "./Footer/index.js";
 import { CategoryContainer } from "./CategoryContainer/CategoryContainer.jsx";
 import { CategoryBox } from "./CategoryBox/CategoryBox.jsx";
 import { EventBox } from "./EventBox/EventBox.jsx";
+import { SelectCategory } from "./SelectComponent/SelectCategory.jsx";
+import { SelectLocation } from "./SelectComponent/SelectLocation.jsx";
 
 export {
   Header,
-  HomePageHeader,
   Footer,
   CategoryContainer,
   EventBox,
+  HomePageHeader,
   CategoryBox,
+  SelectCategory,
+  SelectLocation,
 };
