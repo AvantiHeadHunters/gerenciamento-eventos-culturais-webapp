@@ -14,7 +14,7 @@ export const NavBar = (props) => {
       {isLogged ? (
         <Flex className={style.NavBar} display={{ base: "none", md: "flex" }}>
           <NavBarItem to={"/"} name={"Página Inicial"} logged />
-          <NavBarItem to={"/count"} name={"Sua Conta"} logged />
+          <NavBarItem to={"/explore"} name={"Dashboard"} logged />
           <NavBarItem to={"/"} name={"Logout"} logout onClick={handleLogout} />
         </Flex>
       ) : (
@@ -29,7 +29,7 @@ export const NavBar = (props) => {
         right={"5px"}
         backgroundColor={"white"}
       >
-        {isOpen && <ToggleContent {...props} />}
+        {isOpen && <ToggleContent />}
         <Toggle isOpen={isOpen} onToggle={onToggle} />
       </HStack>
     </>

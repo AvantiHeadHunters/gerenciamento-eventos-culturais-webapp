@@ -1,20 +1,21 @@
 import { Box, Button, ButtonGroup, Flex } from "@chakra-ui/react";
 import style from "./Dashboard.module.css";
 import { useNavigate } from "react-router-dom";
+import { GlobalContext } from "../../providers/globalContext";
+import { useContext } from "react";
 
 export const Dashboard = (props) => {
   const navigate = useNavigate();
-  const name = "user_name";
-  const isAdmin = true;
+  const { loggedUser } = useContext(GlobalContext);
   return (
     <Flex
       {...styleContainer}
-      height={isAdmin === false && "50vh"}
+      height={loggedUser.isAdmin === false && "50vh"}
       className={style.Container}
     >
       <Box {...styleBoxName}>
         <h1 style={h1Style}>
-          {name} <span className={style.span}>&#10040;</span>{" "}
+          {loggedUser.name} <span className={style.span}>&#10040;</span>{" "}
         </h1>
         <h2 style={h2Style}>O que você gostaria de fazer?</h2>
       </Box>
@@ -33,9 +34,14 @@ export const Dashboard = (props) => {
           </Box>
           <ButtonGroup {...styleButtonGroup}>
             <Button {...styleButtonEntity}>Listar todos</Button>
-            <Button {...styleButtonEntity}>Pesquisar Eventos</Button>
+            <Button
+              {...styleButtonEntity}
+              onClick={() => navigate("/search/event")}
+            >
+              Pesquisar Eventos
+            </Button>
 
-            {isAdmin && (
+            {loggedUser.isAdmin && (
               <>
                 <Button
                   {...styleButtonEntity}
@@ -54,8 +60,13 @@ export const Dashboard = (props) => {
           </Box>
           <ButtonGroup {...styleButtonGroup}>
             <Button {...styleButtonEntity}>Listar todos</Button>
-            <Button {...styleButtonEntity}>Pesquisar Categorias</Button>
-            {isAdmin && (
+            <Button
+              {...styleButtonEntity}
+              onClick={() => navigate("/search/category")}
+            >
+              Pesquisar Categorias
+            </Button>
+            {loggedUser.isAdmin && (
               <>
                 <Button
                   {...styleButtonEntity}
@@ -75,7 +86,7 @@ export const Dashboard = (props) => {
           <ButtonGroup {...styleButtonGroup}>
             <Button {...styleButtonEntity}>Listar todos</Button>
             <Button {...styleButtonEntity}>Pesquisar Locais</Button>
-            {isAdmin && (
+            {loggedUser.isAdmin && (
               <>
                 <Button
                   {...styleButtonEntity}

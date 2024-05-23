@@ -21,7 +21,7 @@ export const Toggle = ({ isOpen, onToggle }) => {
 };
 
 export const ToggleContent = () => {
-  const { isLogged } = useContext(GlobalContext);
+  const { isLogged, handleLogout } = useContext(GlobalContext);
   return (
     <Box className={style.Toggle} border={"1px black solid"}>
       {isLogged ? (
@@ -35,13 +35,13 @@ export const ToggleContent = () => {
           backgroundColor={"white"}
           borderRadius={"12px"}
         >
-          <ToggleItem to={"/home"} logged>
+          <ToggleItem to={"/"} logged>
             Página Inicial
           </ToggleItem>
-          <ToggleItem to={"/count"} logged>
-            Sua Conta
+          <ToggleItem to={"/explore"} logged>
+            Dashboard
           </ToggleItem>
-          <ToggleItem to={"/logout"} logged>
+          <ToggleItem to={"/"} logged onClick={handleLogout}>
             Logout
           </ToggleItem>
         </Stack>
@@ -56,8 +56,7 @@ export const ToggleContent = () => {
           border={"solid 1px #000"}
           borderRadius={"13px"}
         >
-          <ToggleItem to={"/home"}>Explore</ToggleItem>
-          <ToggleItem to={"/form/create/event"}>Criar</ToggleItem>
+          <ToggleItem to={"/"}>Explore</ToggleItem>
           <ToggleItem to={"/signup"}>Cadastrar</ToggleItem>
           <ToggleItem to={"/login"}>Entrar</ToggleItem>
         </Stack>
@@ -69,7 +68,10 @@ export const ToggleContent = () => {
 export const ToggleItem = (props) => {
   return (
     <Link to={props.to}>
-      <Box style={{ color: "#000" || (props.logged && "#fff") }}>
+      <Box
+        style={{ color: "#000" || (props.logged && "#fff") }}
+        onClick={props.onClick}
+      >
         {props.children}
       </Box>
       <hr className={style.solid} />

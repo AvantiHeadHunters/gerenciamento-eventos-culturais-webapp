@@ -12,7 +12,6 @@ export const GlobalProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [loggedUser, setLoggedUser] = useState(null);
   const [isLogged, setIsLogged] = useState(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -20,19 +19,18 @@ export const GlobalProvider = ({ children }) => {
     listLocationsRequest();
     listCategoriesRequest();
     listUsersRequest();
+    setIsLogged(JSON.parse(localStorage.getItem("@eventHunters:isLogged")));
+    setLoggedUser(JSON.parse(localStorage.getItem("@eventHunters:user")));
   }, []);
-
-  // console.log(users);
-  console.log(loggedUser);
 
   const loginRequest = async (formData) => {
     try {
       const { data } = await api.post("/user/login", formData);
       localStorage.setItem("@eventHunters:token", data.token);
-      localStorage.setItem("@eventHunters:user_name", data.name);
-      localStorage.setItem("@eventhunters:user_email", data.email);
-      localStorage.setItem("@eventHunters:isLogged")
+      localStorage.setItem("@eventHunters:user", JSON.stringify(data));
+      localStorage.setItem("@eventHunters:isLogged", true);
       setLoggedUser(data);
+      setIsLogged(JSON.parse(localStorage.getItem("@eventHunters:isLogged")));
       navigate("/explore");
     } catch (error) {
       console.log(error);
@@ -45,8 +43,8 @@ export const GlobalProvider = ({ children }) => {
   const handleLogout = async () => {
     try {
       localStorage.removeItem("@eventHunters:token");
-      localStorage.removeItem("@eventHunters:user_name");
-      localStorage.removeItem("@eventhunters:user_email");
+      localStorage.removeItem("@eventHunters:user");
+      localStorage.removeItem("@eventHunters:isLogged");
       setLoggedUser(null);
       setIsLogged(false);
       navigate("/");
@@ -84,6 +82,15 @@ export const GlobalProvider = ({ children }) => {
         },
       });
       console.log("Contato cadastrado com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getEventbyId = async (id) => {
+    try {
+      const { data } = await api.get(`/event/${Number(id)}`);
+      return data;
     } catch (error) {
       console.log(error);
     }
@@ -144,6 +151,7 @@ export const GlobalProvider = ({ children }) => {
         registerUserRequest,
         createEventRequest,
         handleLogout,
+        getEventbyId,
       }}
     >
       {children}
