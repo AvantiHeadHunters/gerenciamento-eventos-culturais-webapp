@@ -137,6 +137,7 @@ export const GlobalProvider = ({ children }) => {
         locations,
         categories,
         users,
+        isLogged,
         loggedUser,
         loginRequest,
         registerUserRequest,
