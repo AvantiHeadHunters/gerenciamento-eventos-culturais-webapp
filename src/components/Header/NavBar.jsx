@@ -3,22 +3,22 @@ import { Toggle, ToggleContent } from "./Toggle";
 import { Link } from "react-router-dom";
 import style from "./header.module.css";
 import Proptypes from "prop-types";
+import { useContext } from "react";
+import { GlobalContext } from "../../providers/globalContext";
 
 export const NavBar = (props) => {
-  const { isLogged } = props;
+  const { isLogged, handleLogout } = useContext(GlobalContext);
   const { isOpen, onToggle } = useDisclosure();
   return (
     <>
       {isLogged ? (
         <Flex className={style.NavBar} display={{ base: "none", md: "flex" }}>
-          <NavBarItem to={"/home"} name={"Página Inicial"} logged />
+          <NavBarItem to={"/"} name={"Página Inicial"} logged />
           <NavBarItem to={"/count"} name={"Sua Conta"} logged />
-          <NavBarItem to={"/logout"} name={"Logout"} logout />
+          <NavBarItem to={"/"} name={"Logout"} logout onClick={handleLogout} />
         </Flex>
       ) : (
         <Flex className={style.NavBar} display={{ base: "none", md: "flex" }}>
-          <NavBarItem to={"/home"} name={"Explore"} />
-          <NavBarItem to={"/form/create/event"} name={"Criar"} />
           <NavBarItem to={"/signup"} name={"Cadastre-se"} />
           <NavBarItem to={"/login"} name={"Entrar"} bold />
         </Flex>
@@ -36,7 +36,7 @@ export const NavBar = (props) => {
   );
 };
 
-const NavBarItem = ({ name, to, bold, logged, logout }) => {
+const NavBarItem = ({ name, to, bold, logged, logout, onClick }) => {
   const styleButton = {
     backgroundColor: (bold && "#000") || (logged && "#000"),
     color: (bold && "white") || (logged && "white") || (logout && "yellow"),
@@ -51,7 +51,11 @@ const NavBarItem = ({ name, to, bold, logged, logout }) => {
 
   return (
     <Link to={to}>
-      <button className={style.NavBarItem} style={styleButton}>
+      <button
+        className={style.NavBarItem}
+        style={styleButton}
+        onClick={onClick}
+      >
         {name}
       </button>
     </Link>
