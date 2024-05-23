@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import style from "./header.module.css";
 import { NavBar } from "./NavBar.jsx";
 import Proptypes from "prop-types";
+import { useContext } from "react";
+import { GlobalContext } from "../../providers/globalContext.jsx";
 
 export const Header = (props) => {
-  const { isLogged } = props;
+  const { isLogged } = useContext(GlobalContext);
   return (
     <header
       className={style.Header}
@@ -23,7 +25,6 @@ export const Header = (props) => {
             EVENT <span className={style.span}>&#10040;</span>
             <br /> HUNTERS
           </h1>
-          <hr className={style.solid} />
         </Link>
       )}
       <NavBar {...props} />

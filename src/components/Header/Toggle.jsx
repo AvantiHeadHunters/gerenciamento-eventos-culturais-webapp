@@ -3,6 +3,8 @@ import { Box, IconButton, Stack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import Proptypes from "prop-types";
+import { useContext } from "react";
+import { GlobalContext } from "../../providers/globalContext";
 
 export const Toggle = ({ isOpen, onToggle }) => {
   return (
@@ -18,8 +20,8 @@ export const Toggle = ({ isOpen, onToggle }) => {
   );
 };
 
-export const ToggleContent = (props) => {
-  const { isLogged } = props;
+export const ToggleContent = () => {
+  const { isLogged } = useContext(GlobalContext);
   return (
     <Box className={style.Toggle} border={"1px black solid"}>
       {isLogged ? (
