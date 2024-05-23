@@ -9,12 +9,19 @@ import {
 import { Controller, useForm } from "react-hook-form";
 import style from "./SearchCategory.module.css";
 import { CategoryBox } from "../../../components";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../../../providers/globalContext";
 
 export const SearchCategory = () => {
+  const { categories } = useContext(GlobalContext);
+
   const { control, watch } = useForm();
   const [search, setSearch] = useState(false);
   const value = watch("search");
+
+  const filteredCategories = categories?.filter((category) =>
+    category.name.toLowerCase().includes(value?.toLowerCase())
+  );
 
   const searchFun = (search) => {
     setSearch((state) => !state);
@@ -63,8 +70,6 @@ export const SearchCategory = () => {
             Pesquisar
           </Button>
         </Flex>
-
-        {console.log(value)}
       </Flex>
       {search && (
         <Flex
@@ -76,7 +81,13 @@ export const SearchCategory = () => {
           <h1 className={style.title}>Resultados da sua Busca</h1>
           <h2 className={style.h2}>Você buscou por &quot;{value}&quot;</h2>
           <Flex className={style.Result}>
-            <CategoryBox category={"Teatro"} />
+            <ul>
+              {filteredCategories.map((category) => (
+                <li key={category.id}>
+                  <CategoryBox category={category.name} />
+                </li>
+              ))}
+            </ul>
           </Flex>
         </Flex>
       )}
