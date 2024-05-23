@@ -22,9 +22,6 @@ export const GlobalProvider = ({ children }) => {
     listUsersRequest();
   }, []);
 
-  // console.log(events);
-  // console.log(locations);
-  // console.log(categories);
   // console.log(users);
   console.log(loggedUser);
 
@@ -32,8 +29,9 @@ export const GlobalProvider = ({ children }) => {
     try {
       const { data } = await api.post("/user/login", formData);
       localStorage.setItem("@eventHunters:token", data.token);
+      localStorage.setItem("@eventHunters:user_name", data.name);
+      localStorage.setItem("@eventhunters:user_email", data.email);
       setLoggedUser(data);
-      setIsLogged(true);
       navigate("/explore");
     } catch (error) {
       console.log(error);
@@ -46,6 +44,8 @@ export const GlobalProvider = ({ children }) => {
   const handleLogout = async () => {
     try {
       localStorage.removeItem("@eventHunters:token");
+      localStorage.removeItem("@eventHunters:user_name");
+      localStorage.removeItem("@eventhunters:user_email");
       setLoggedUser(null);
       setIsLogged(false);
       navigate("/");
@@ -67,8 +67,8 @@ export const GlobalProvider = ({ children }) => {
 
   const listEventsRequest = async () => {
     try {
-      const { data } = await api.get("/events");
-      setEvents(data);
+      const { data = [] } = await api.get("/events");
+      setEvents([...data]);
     } catch (error) {
       console.log(error);
     }
@@ -91,12 +91,12 @@ export const GlobalProvider = ({ children }) => {
   const listLocationsRequest = async () => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
-      const { data } = await api.get("/locations", {
+      const { data = [] } = await api.get("/locations", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setLocations(data);
+      setLocations([...data]);
     } catch (error) {
       console.log(error);
     }
@@ -105,12 +105,12 @@ export const GlobalProvider = ({ children }) => {
   const listCategoriesRequest = async () => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
-      const { data } = await api.get("/categories", {
+      const { data = [] } = await api.get("/categories", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      setCategories(data);
+      setCategories([...data]);
     } catch (error) {
       console.log(error);
     }
