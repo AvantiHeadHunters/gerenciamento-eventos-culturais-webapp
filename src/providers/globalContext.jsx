@@ -6,29 +6,51 @@ import { useNavigate } from "react-router-dom";
 export const GlobalContext = createContext({});
 
 export const GlobalProvider = ({ children }) => {
-  const [events, setEvents] = useState(null);
+  const [events, setEvents] = useState([]);
   const [locations, setLocations] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [loggedUser, setLoggedUser] = useState(null);
+  const [isLogged, setIsLogged] = useState(false);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     listEventsRequest();
     listLocationsRequest();
+    listCategoriesRequest();
+    listUsersRequest();
   }, []);
 
   // console.log(events);
-  console.log(locations);
+  // console.log(locations);
+  // console.log(categories);
+  // console.log(users);
+  console.log(loggedUser);
 
   const loginRequest = async (formData) => {
     try {
       const { data } = await api.post("/user/login", formData);
       localStorage.setItem("@eventHunters:token", data.token);
+      setLoggedUser(data);
+      setIsLogged(true);
       navigate("/explore");
     } catch (error) {
       console.log(error);
       if (error.response?.data.message === "Unauthorized") {
         console.log("Email ou senha não correspondem 😅");
       }
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      localStorage.removeItem("@eventHunters:token");
+      setLoggedUser(null);
+      setIsLogged(false);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -80,14 +102,46 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
+  const listCategoriesRequest = async () => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+      const { data } = await api.get("/categories", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setCategories(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const listUsersRequest = async () => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+      const { data } = await api.get("/users", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      setUsers(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <GlobalContext.Provider
       value={{
         events,
+        locations,
+        categories,
+        users,
+        loggedUser,
         loginRequest,
         registerUserRequest,
         createEventRequest,
-        locations,
+        handleLogout,
       }}
     >
       {children}
