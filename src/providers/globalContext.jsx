@@ -81,7 +81,7 @@ export const GlobalProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("Contato cadastrado com sucesso 🎉");
+      console.log("Evento criado com sucesso 🎉");
     } catch (error) {
       console.log(error);
     }
@@ -110,6 +110,20 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
+  const createLocationRequest = async (formData) => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+      await api.post("/location", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("Local criado com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const listCategoriesRequest = async () => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
@@ -119,6 +133,20 @@ export const GlobalProvider = ({ children }) => {
         },
       });
       setCategories([...data]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const createCategoryRequest = async (formData) => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+      await api.post("/category", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("Categoria criada com sucesso 🎉");
     } catch (error) {
       console.log(error);
     }
@@ -150,6 +178,8 @@ export const GlobalProvider = ({ children }) => {
         loginRequest,
         registerUserRequest,
         createEventRequest,
+        createCategoryRequest,
+        createLocationRequest,
         handleLogout,
         getEventbyId,
       }}

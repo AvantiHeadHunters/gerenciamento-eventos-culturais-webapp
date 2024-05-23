@@ -1,9 +1,16 @@
 import { Box, ButtonGroup, Select } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import style from "./FormCreateLocation.module.css";
-
 import { States } from "./States";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { GlobalContext } from "../../../providers/globalContext";
+
 export const FormCreateLocation = () => {
+  const { createLocationRequest } = useContext(GlobalContext);
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -11,14 +18,19 @@ export const FormCreateLocation = () => {
   } = useForm({
     defaultValues: {
       name: "",
-      cep: "",
+      zipCode: "",
       address: "",
       city: "",
       state: "",
-      link_maps: "",
+      image: "",
+      linkMaps: "",
     },
   });
-  const onsubmit = (data) => console.log(data);
+
+  const onsubmit = (data) => {
+    createLocationRequest(data);
+    navigate("/explore");
+  };
 
   return (
     <div className={style.formContainer}>
@@ -32,7 +44,7 @@ export const FormCreateLocation = () => {
         <label>CEP</label>
         <input
           type="text"
-          {...register("cep", { required: "Insira o cep do local" })}
+          {...register("zipCode", { required: "Insira o cep do local" })}
         />
 
         <label>Endereço</label>
@@ -57,18 +69,28 @@ export const FormCreateLocation = () => {
           </Select>
         </Box>
 
+        <label>Imagem</label>
+        <input
+          type="text"
+          {...register("image", {
+            required: "Insira o link de uma imagem",
+          })}
+        />
+
         <label>Link do Google Maps</label>
         <input
           type="text"
-          {...register("link_maps", {
+          {...register("linkMaps", {
             required: "Insira o link do maps do local",
           })}
         />
         {(errors.name ||
           errors.address ||
-          errors.cep ||
+          errors.zipCode ||
           errors.state ||
-          errors.city) && (
+          errors.city ||
+          errors.image ||
+          errors.linkMaps) && (
           <span style={errorStyle}>Preencha todos os campos</span>
         )}
 
@@ -81,6 +103,9 @@ export const FormCreateLocation = () => {
           <button
             className={style.button}
             style={{ border: "2px solid red", color: "red" }}
+            onClick={() => {
+              navigate("/explore");
+            }}
           >
             Cancelar
           </button>

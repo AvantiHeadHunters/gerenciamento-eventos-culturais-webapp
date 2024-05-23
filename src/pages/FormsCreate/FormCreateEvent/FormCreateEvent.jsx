@@ -4,10 +4,13 @@ import style from "./FormCreateEvent.module.css";
 import { useContext } from "react";
 import { GlobalContext } from "../../../providers/globalContext";
 import { SelectCategory, SelectLocation } from "../../../components/index.js";
+import { useNavigate } from "react-router-dom";
 
 export const FormCreateEvent = () => {
   const { createEventRequest, loggedUser, categories, locations } =
     useContext(GlobalContext);
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -25,15 +28,14 @@ export const FormCreateEvent = () => {
       userId: Number(loggedUser.isAdmin ? loggedUser.userId : null),
     },
   });
-  console.log();
-  const onsubmit = (data) => {
+
+  const onSubmit = (data) => {
     createEventRequest(data);
-    console.log(data);
   };
 
   return (
     <div className={style.formContainer}>
-      <form onSubmit={handleSubmit(onsubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h1>Crie um Evento</h1>
 
         <label>Nome</label>
@@ -96,6 +98,9 @@ export const FormCreateEvent = () => {
           <button
             className={style.button}
             style={{ border: "2px solid red", color: "red" }}
+            onClick={() => {
+              navigate("/explore");
+            }}
           >
             Cancelar
           </button>
