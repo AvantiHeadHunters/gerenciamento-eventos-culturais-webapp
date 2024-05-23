@@ -31,6 +31,7 @@ export const GlobalProvider = ({ children }) => {
       localStorage.setItem("@eventHunters:token", data.token);
       localStorage.setItem("@eventHunters:user_name", data.name);
       localStorage.setItem("@eventhunters:user_email", data.email);
+      localStorage.setItem("@eventHunters:isLogged")
       setLoggedUser(data);
       navigate("/explore");
     } catch (error) {
