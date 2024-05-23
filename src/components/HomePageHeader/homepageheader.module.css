@@ -1,0 +1,82 @@
+.Header {
+  padding: 30px;
+  display: flex;
+  flex-direction: "row";
+  align-items: "baseline";
+  justify-content: space-between;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  /*background-color: transparent;*/
+}
+
+.Header.scrolled:not(.logged) {
+  background-color: #fff;
+}
+
+.Header.scrolled.logged {
+  background-color: #000;
+}
+
+.Header h1 {
+  font-family: var(--font-secondary);
+  font-weight: 900;
+  font-size: 2em;
+}
+
+.span {
+  color: var(--color-primary);
+}
+
+.NavBar {
+  display: flex;
+  align-items: center;
+}
+
+.NavBarItem {
+  font-family: var(--font-primary);
+  margin: 5px;
+  padding: 10px;
+  padding-left: 7px;
+  padding-right: 7px;
+  font-weight: 500;
+  border: solid 1px var(--grey-5);
+  border-radius: 14px;
+}
+
+.NavBarItem:hover {
+  background-color: var(--grey-3);
+  transition: 400ms;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.boldbutton {
+  background-color: var(--grey-1);
+  border: solid 1px var(--grey-5);
+  border-radius: 14px;
+  color: var(--grey-5);
+}
+
+.solid {
+  border: 2px solid var(--grey-1);
+}
+
+@media (max-width: 760px) {
+  .Header h1 {
+    margin: 10px;
+    font-family: var(--font-primary);
+    font-size: 20px;
+    font-weight: 900;
+  }
+
+  .Toggle {
+    font-family: var(--font-secondary);
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 50px;
+  }
+}
