@@ -9,6 +9,7 @@ export const GlobalProvider = ({ children }) => {
   const [events, setEvents] = useState([]);
   const [locations, setLocations] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [editingCategory, setEditingCategory] = useState(null);
   const [users, setUsers] = useState([]);
   const [loggedUser, setLoggedUser] = useState(null);
   const [isLogged, setIsLogged] = useState(false);
@@ -152,6 +153,53 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
+  const updateCategoryRequest = async (formData) => {
+    try {
+      const categoryId = editingCategory.id;
+      const token = localStorage.getItem("@eventHunters:token");
+
+      const { data } = await api.put(`/category/${categoryId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newCategoriesList = categories.map((contact) => {
+        if (contact.id === editingCategory.id) {
+          return data;
+        } else {
+          return contact;
+        }
+      });
+
+      setCategories(newCategoriesList);
+      console.log("Categoria editada com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteCategoryRequest = async (deletingId) => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+
+      await api.delete(`/category/${deletingId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newCategoriesList = categories.filter(
+        (category) => category.id !== deletingId,
+      );
+
+      setCategories(newCategoriesList);
+      console.log("Categoria deletada com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const listUsersRequest = async () => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
@@ -182,6 +230,10 @@ export const GlobalProvider = ({ children }) => {
         createLocationRequest,
         handleLogout,
         getEventbyId,
+        editingCategory,
+        setEditingCategory,
+        updateCategoryRequest,
+        deleteCategoryRequest,
       }}
     >
       {children}
