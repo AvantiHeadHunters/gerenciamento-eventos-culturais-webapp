@@ -12,6 +12,7 @@ export {
   Footer,
   CategoryContainer,
   EventBox,
+  HomePageHeader,
   CategoryBox,
   SelectCategory,
   SelectLocation,
