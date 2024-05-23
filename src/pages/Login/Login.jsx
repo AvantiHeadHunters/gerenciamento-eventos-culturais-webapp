@@ -18,7 +18,6 @@ export const Login = () => {
 
   const onsubmit = (data) => {
     loginRequest(data);
-    console.log(data);
   };
 
   return (

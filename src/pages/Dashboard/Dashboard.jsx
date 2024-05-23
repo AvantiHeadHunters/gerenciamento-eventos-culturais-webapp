@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { GlobalContext } from "../../providers/globalContext";
 import { useContext } from "react";
 
-export const Dashboard = (props) => {
+export const Dashboard = () => {
   const navigate = useNavigate();
   const { loggedUser } = useContext(GlobalContext);
+
   return (
     <Flex
       {...styleContainer}

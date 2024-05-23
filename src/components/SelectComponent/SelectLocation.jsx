@@ -12,7 +12,7 @@ const SelectLocation = ({ location, control, name }) => {
         "en",
         {
           sensitivity: "base",
-        }
+        },
       );
     }
     return 0;
@@ -47,4 +47,4 @@ const SelectLocation = ({ location, control, name }) => {
   );
 };
 
-export { SelectLocation }
+export { SelectLocation };
