@@ -10,6 +10,7 @@ export const GlobalProvider = ({ children }) => {
   const [locations, setLocations] = useState([]);
   const [categories, setCategories] = useState([]);
   const [editingCategory, setEditingCategory] = useState(null);
+  const [editingEvent, setEditingEvent] = useState(null);
   const [users, setUsers] = useState([]);
   const [loggedUser, setLoggedUser] = useState(null);
   const [isLogged, setIsLogged] = useState(false);
@@ -94,6 +95,25 @@ export const GlobalProvider = ({ children }) => {
     try {
       const { data } = await api.get(`/event/${Number(id)}`);
       return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteEventRequest = async (deletingId) => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+
+      await api.delete(`/event/${deletingId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newEventsList = events.filter((event) => event.id !== deletingId);
+
+      setEvents(newEventsList);
+      console.log("Evento deletado com sucesso 🎉");
     } catch (error) {
       console.log(error);
     }
@@ -234,9 +254,11 @@ export const GlobalProvider = ({ children }) => {
         getEventbyId,
         editingCategory,
         setEditingCategory,
+        setEditingEvent,
         updateCategoryRequest,
         deleteCategoryRequest,
-        listEventsRequest
+        deleteEventRequest,
+        listEventsRequest,
       }}
     >
       {children}
