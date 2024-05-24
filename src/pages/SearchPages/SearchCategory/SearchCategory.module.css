@@ -1,75 +1,72 @@
-.Container{
-   position: relative;
-   top: 10%
+.Container {
+  position: relative;
+  min-height: 60vh;
 }
 
 .SearchContainer .title {
-   font-family: "Inter", sans-serif;
-   font-size: 35px;
-   font-weight: bold;
-   margin: 20px 0;
+  font-family: "Inter", sans-serif;
+  font-size: 35px;
+  font-weight: bold;
+  margin: 20px 0;
 }
 
-
-.Result{
-   margin: 30px 0;
+.Result {
+  margin: 30px 0;
 }
-.SearchResultContainer{
-   margin: 40px 0 0 0;
+.SearchResultContainer {
+  margin: 40px 0 0 0;
 }
-.SearchResultContainer .title{
-   font-family: "Inter", sans-serif;
-   font-size: 30px;
-   font-weight: bold;
-   margin: 10px 0;
+.SearchResultContainer .title {
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 10px 0;
 }
 
 .SearchResultContainer .h2 {
-   font-family: "Inter", sans-serif;
-   font-size: 15px;
-   color: #828282;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: #828282;
 }
 .InputSearch {
-   border: 3px black solid;
-   border-radius: 10px;
-   font-size: 20px;
-   align-items: center;
-   padding: 0 30px 0 0;
-   margin: 5px 0;
-   box-shadow: -8px 5px 1px 2px #0d0d0d;
+  border: 3px black solid;
+  border-radius: 10px;
+  font-size: 20px;
+  align-items: center;
+  padding: 0 30px 0 0;
+  margin: 5px 0;
+  box-shadow: -8px 5px 1px 2px #0d0d0d;
 }
 .InputSearch input {
-   padding: 12px 15px;
-   border: none;
+  padding: 12px 15px;
+  border: none;
 }
-.InputSearch input:focus{
-   outline: none;
+.InputSearch input:focus {
+  outline: none;
 }
-.ButtonSearch{
-   border: 2px black solid;
-   padding: 20px;
-   border-radius: 14px; 
-   margin: 15px 20px;
+.ButtonSearch {
+  border: 2px black solid;
+  padding: 20px;
+  border-radius: 14px;
+  margin: 15px 20px;
 }
-
 
 @media (max-width: 350px) {
-
-   .SearchResultContainer{
-      align-items: center;
-   }
-   .SearchResultContainer .title{
-      font-size: 20px;
-   }
-   .SearchContainer{
-      width: 95%;
-   }
-   .InputSearch {
-      font-size: 14px;
-   }
+  .SearchResultContainer {
+    align-items: center;
+  }
+  .SearchResultContainer .title {
+    font-size: 20px;
+  }
+  .SearchContainer {
+    width: 95%;
+  }
+  .InputSearch {
+    font-size: 14px;
+  }
 }
-@media (min-width: 1000px){
-  .Container{
-   padding: 0 50px;
-} 
+@media (min-width: 1000px) {
+  .Container {
+    padding: 0 50px;
+  }
 }
