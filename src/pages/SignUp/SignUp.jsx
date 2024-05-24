@@ -14,7 +14,15 @@ export const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ defaultValues: { email: "", password: "", name: "" } });
+  } = useForm({
+    defaultValues: {
+      email: "",
+      password: "",
+      name: "",
+      isAdmin: false,
+      image: "img",
+    },
+  });
 
   const onsubmit = (data) => {
     console.log(data);
@@ -50,7 +58,6 @@ export const SignUp = () => {
             type={"password"}
             {...register("password", {
               required: "Insira a senha",
-              // pattern: /\S+@\S+\.\S+/,
             })}
           />
 

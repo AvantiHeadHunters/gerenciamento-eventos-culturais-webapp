@@ -34,7 +34,12 @@ export const Dashboard = () => {
             <h1>Evento</h1>
           </Box>
           <ButtonGroup {...styleButtonGroup}>
-            <Button {...styleButtonEntity}>Listar todos</Button>
+            <Button
+              {...styleButtonEntity}
+              onClick={() => navigate("/list/events")}
+            >
+              Listar todos
+            </Button>
             <Button
               {...styleButtonEntity}
               onClick={() => navigate("/search/event")}
@@ -60,7 +65,12 @@ export const Dashboard = () => {
             <h1>Categoria</h1>
           </Box>
           <ButtonGroup {...styleButtonGroup}>
-            <Button {...styleButtonEntity}>Listar todos</Button>
+            <Button
+              {...styleButtonEntity}
+              onClick={() => navigate("/list/categories")}
+            >
+              Listar todos
+            </Button>
             <Button
               {...styleButtonEntity}
               onClick={() => navigate("/search/category")}
@@ -85,8 +95,18 @@ export const Dashboard = () => {
             <h1>Local</h1>
           </Box>
           <ButtonGroup {...styleButtonGroup}>
-            <Button {...styleButtonEntity}>Listar todos</Button>
-            <Button {...styleButtonEntity}>Pesquisar Locais</Button>
+            <Button
+              {...styleButtonEntity}
+              onClick={() => navigate("/list/locations")}
+            >
+              Listar todos
+            </Button>
+            <Button
+              {...styleButtonEntity}
+              onClick={() => navigate("/search/location")}
+            >
+              Pesquisar Locais
+            </Button>
             {loggedUser.isAdmin && (
               <>
                 <Button

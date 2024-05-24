@@ -14,6 +14,10 @@ import {
   Dashboard,
   SearchCategory,
   SearchEvent,
+  ListCategories,
+  ListEvents,
+  ListLocations,
+  SearchLocation
 } from "../pages/index.js";
 
 export const Routers = () => {
@@ -30,6 +34,10 @@ export const Routers = () => {
         <Route path="/form/edit/location" element={<FormEditLocation />} />
         <Route path="/search/category" element={<SearchCategory />} />
         <Route path="/search/event" element={<SearchEvent />} />
+        <Route path="/search/location" element={<SearchLocation />} />
+        <Route path="/list/categories" element={<ListCategories />} />
+        <Route path="/list/events" element={<ListEvents />}/>
+        <Route path="/list/locations" element={<ListLocations/>}/>
       </Route>
       <Route path="*" element={<PageNotFound />} />
       <Route path="/signup" element={<SignUp />} />

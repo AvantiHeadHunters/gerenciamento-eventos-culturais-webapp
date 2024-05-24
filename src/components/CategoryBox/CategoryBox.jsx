@@ -5,8 +5,8 @@ import { useContext } from "react";
 import { GlobalContext } from "../../providers/globalContext";
 import { useNavigate } from "react-router-dom";
 
-export const CategoryBox = ({ category }) => {
-  const { setEditingCategory, deleteCategoryRequest } =
+export const CategoryBox = ({ category, margin }) => {
+  const { setEditingCategory, deleteCategoryRequest, loggedUser } =
     useContext(GlobalContext);
   const navigate = useNavigate();
   const name = category.name;
@@ -21,18 +21,27 @@ export const CategoryBox = ({ category }) => {
   };
 
   return (
-    <Box className={style.Box} size={["xs", "sm"]} width={["xs", "sm", "md"]}>
+    <Box
+      className={style.Box}
+      size={["xs", "sm"]}
+      width={["xs", "sm", "md"]}
+      margin={margin}
+    >
       <h1>{name}</h1>
-      <ButtonGroup flexDirection={"column"} gap={[2]}>
-        <IconButton
-          icon={<EditIcon />}
-          onClick={() => handleUpdateClick(category)}
-        />
-        <IconButton
-          icon={<DeleteIcon />}
-          onClick={() => handleDeleteClick(category)}
-        />
-      </ButtonGroup>
+      {loggedUser.isAdmin ? (
+        <ButtonGroup flexDirection={"column"} gap={[2]}>
+          <IconButton
+            icon={<EditIcon />}
+            onClick={() => handleUpdateClick(category)}
+          />
+          <IconButton
+            icon={<DeleteIcon />}
+            onClick={() => handleDeleteClick(category)}
+          />
+        </ButtonGroup>
+      ) : (
+        false
+      )}
     </Box>
   );
 };

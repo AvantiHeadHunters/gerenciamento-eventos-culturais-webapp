@@ -6,6 +6,7 @@ import { CategoryBox } from "./CategoryBox/CategoryBox.jsx";
 import { EventBox } from "./EventBox/EventBox.jsx";
 import { SelectCategory } from "./SelectComponent/SelectCategory.jsx";
 import { SelectLocation } from "./SelectComponent/SelectLocation.jsx";
+import { LocationBox } from "./LocationBox/LocationBox.jsx";
 
 export {
   Header,
@@ -16,4 +17,5 @@ export {
   CategoryBox,
   SelectCategory,
   SelectLocation,
+  LocationBox,
 };

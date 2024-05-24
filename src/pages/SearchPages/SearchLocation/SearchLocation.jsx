@@ -7,29 +7,20 @@ import {
   InputLeftAddon,
 } from "@chakra-ui/react";
 import { Controller, useForm } from "react-hook-form";
-import style from "./SearchEvent.module.css";
+import style from "./SearchLocation.module.css";
 import { EventBox } from "../../../components";
 import { useContext, useState } from "react";
 import { GlobalContext } from "../../../providers/globalContext";
 
-export const SearchEvent = () => {
+export const SearchLocation = () => {
   const { control, watch } = useForm();
   const [search, setSearch] = useState(false);
   const value = watch("search");
   const valueDate = watch("searchDate");
-  const { events, listEventsRequest } = useContext(GlobalContext);
+  const { locations, listLocationsRequest } = useContext(GlobalContext);
 
   const searchFun = (search) => {
-    const params = {};
-
-    if (value) {
-      params.name = value;
-    }
-    if (valueDate) {
-      params.date = valueDate;
-    }
     setSearch(true);
-    listEventsRequest(params);
   };
 
   return (
@@ -46,7 +37,7 @@ export const SearchEvent = () => {
         flexDirection={"column"}
         width={"max-content"}
       >
-        <h1 className={style.title}>Evento</h1>
+        <h1 className={style.title}>Locais</h1>
 
         <InputGroup className={style.InputSearch}>
           <InputLeftAddon border={"none"}>
@@ -62,29 +53,12 @@ export const SearchEvent = () => {
                 onBlur={onBlur}
                 value={value}
                 ref={ref}
-                placeholder="Insira a categoria"
+                placeholder="Insira o local"
               />
             )}
           />
         </InputGroup>
-        <Flex
-          justifyContent={"space-between"}
-          alignItems={"center"}
-          width={"100%"}
-        >
-          <Controller
-            name="searchDate"
-            control={control}
-            render={({ field: { onChange, onBlur, value, ref } }) => (
-              <Input
-                type="date"
-                onChange={onChange}
-                onBlur={onBlur}
-                value={value}
-                ref={ref}
-              />
-            )}
-          />
+        <Flex alignItems={"center"} justifyContent={"center"} width={"100%"}>
           <Button
             className={style.ButtonSearch}
             onClick={() => searchFun(value)}
@@ -104,11 +78,7 @@ export const SearchEvent = () => {
           <h2 className={style.h2}>Você buscou por &quot;{value}&quot;</h2>
 
           <Flex className={style.Result}>
-            <ul>
-              {events.map((event) => (
-                <EventBox key={event.id} event={event} />
-              ))}
-            </ul>
+            <h1>Resultados</h1>
           </Flex>
         </Flex>
       ) : null}

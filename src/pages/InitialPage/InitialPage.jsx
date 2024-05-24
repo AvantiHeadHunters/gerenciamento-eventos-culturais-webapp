@@ -5,11 +5,10 @@ import {
   IconButton,
   Input,
   InputGroup,
-  InputLeftElement, // Correção de InputLeftAddon para InputLeftElement
+  InputLeftElement,
   Box,
-  Button, // Alteração de Button para o componente correto
+  Button,
   Text,
-  Center, // Alteração de Text para o componente correto
 } from "@chakra-ui/react";
 import Slider from "react-slick";
 import style from "./InitialPage.module.css";
@@ -137,7 +136,23 @@ export const InitialPage = () => {
             placeholder="Pesquise seu evento"
           />
         </InputGroup>
-        <Button className={style.searchButton}>Pesquisar</Button>
+        <Button
+          className={style.searchButton}
+          sx={{
+            backgroundColor: "#9370DB",
+            color: "white",
+            borderRadius: "5px",
+            borderColor: "#9370DB",
+            _hover: {
+              backgroundColor: "#C3A6C3",
+            },
+            _active: {
+              backgroundColor: "#9370DB",
+            },
+          }}
+        >
+          Pesquisar
+        </Button>
       </Flex>
       <Box margin="20px" padding="20px">
         <Text fontWeight="bold" fontSize="larger">

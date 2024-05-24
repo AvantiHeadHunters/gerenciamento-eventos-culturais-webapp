@@ -23,6 +23,7 @@ export const FormEditCategory = () => {
   });
   const onSubmit = (data) => {
     updateCategoryRequest(data);
+    navigate("/explore")
   };
 
   return (

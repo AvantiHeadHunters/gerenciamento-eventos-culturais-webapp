@@ -3,23 +3,32 @@ import { useForm } from "react-hook-form";
 import style from "./FormEditLocation.module.css";
 
 import { States } from "./States.js";
+import { useContext } from "react";
+import { GlobalContext } from "../../../providers/globalContext.jsx";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const FormEditLocation = (props) => {
+  const { editingLocation, updateLocationRequest } = useContext(GlobalContext);
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: "",
-      cep: "",
-      address: "",
-      city: "",
-      state: "",
-      link_maps: "",
+      name: editingLocation.name,
+      zipCode: editingLocation.zip_code,
+      address: editingLocation.address,
+      city: editingLocation.city,
+      state: editingLocation.state,
+      linkMaps: editingLocation.link_maps,
     },
   });
-  const onsubmit = (data) => console.log(data);
+  const onsubmit = (data) => {
+    console.log(data);
+    updateLocationRequest(data);
+    navigate("/explore")
+  };
 
   return (
     <div className={style.formContainer}>
@@ -33,7 +42,7 @@ export const FormEditLocation = (props) => {
         <label>CEP</label>
         <input
           type="text"
-          {...register("cep", { required: "Insira o cep do local" })}
+          {...register("zipCode", { required: "Insira o cep do local" })}
         />
 
         <label>Endereço</label>
@@ -61,7 +70,7 @@ export const FormEditLocation = (props) => {
         <label>Link do Google Maps</label>
         <input
           type="text"
-          {...register("link_maps", {
+          {...register("linkMaps", {
             required: "Insira o link do maps do local",
           })}
         />

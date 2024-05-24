@@ -9,6 +9,9 @@ export const GlobalProvider = ({ children }) => {
   const [events, setEvents] = useState([]);
   const [locations, setLocations] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [editingCategory, setEditingCategory] = useState(null);
+  const [editingEvent, setEditingEvent] = useState(null);
+  const [editingLocation, setEditingLocation] = useState(null);
   const [users, setUsers] = useState([]);
   const [loggedUser, setLoggedUser] = useState(null);
   const [isLogged, setIsLogged] = useState(false);
@@ -65,9 +68,11 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
-  const listEventsRequest = async () => {
+  const listEventsRequest = async (params = {}) => {
     try {
-      const { data = [] } = await api.get("/events");
+      const { data = [] } = await api.get("/events", {
+        params,
+      });
       setEvents([...data]);
     } catch (error) {
       console.log(error);
@@ -88,35 +93,119 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
-  const createCategoryRequest = async (formData) => {
+  const updateEventRequest = async (formData) => {
     try {
+      const eventId = editingEvent.id;
       const token = localStorage.getItem("@eventHunters:token");
-      await api.post("/category", formData, {
+
+      const { data } = await api.put(`/event/${eventId}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("Categoria cadastrada com sucesso 🎉");
+
+      const newEventsList = events.map((event) => {
+        if (event.id === editingEvent.id) {
+          return data;
+        } else {
+          return event;
+        }
+      });
+
+      setEvents(newEventsList);
+
+      console.log("Evento editada com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteEventRequest = async (deletingId) => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+
+      await api.delete(`/event/${deletingId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newEventList = events.filter((event) => event.id !== deletingId);
+
+      setEvents(newEventList);
+      console.log("Evento deletado com sucesso 🎉");
     } catch (error) {
       console.log(error);
     }
   };
 
-
   const listLocationsRequest = async () => {
     try {
-      const token = localStorage.getItem("@eventHunters:token");
-      const { data = [] } = await api.get("/locations", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const { data = [] } = await api.get("/locations");
       setLocations([...data]);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const createLocationRequest = async (formData) => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+      await api.post("/location", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("Local cadastrado com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  const updateLocationRequest = async (formData) => {
+    try {
+      const locationId = editingLocation.id;
+      const token = localStorage.getItem("@eventHunters:token");
+
+      const { data } = await api.put(`/location/${locationId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newLocationsList = locations.map((location) => {
+        if (location.id === editingLocation.id) {
+          return data;
+        } else {
+          return location;
+        }
+      });
+
+      setLocations(newLocationsList);
+      console.log("Local editado com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteLocationRequest = async (deletingId) => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+
+      await api.delete(`/location/${deletingId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newLocationList = locations.filter(
+        (location) => location.id !== deletingId,
+      );
+      setLocations(newLocationList);
+      console.log("Local deletado com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const listCategoriesRequest = async () => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
@@ -126,6 +215,67 @@ export const GlobalProvider = ({ children }) => {
         },
       });
       setCategories([...data]);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const createCategoryRequest = async (formData) => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+      await api.post("/category", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("Categoria criada com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateCategoryRequest = async (formData) => {
+    try {
+      const categoryId = editingCategory.id;
+      const token = localStorage.getItem("@eventHunters:token");
+
+      const { data } = await api.put(`/category/${categoryId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newCategoriesList = categories.map((contact) => {
+        if (contact.id === editingCategory.id) {
+          return data;
+        } else {
+          return contact;
+        }
+      });
+
+      setCategories(newCategoriesList);
+      console.log("Categoria editada com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteCategoryRequest = async (deletingId) => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+
+      await api.delete(`/category/${deletingId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newCategoriesList = categories.filter(
+        (category) => category.id !== deletingId,
+      );
+
+      setCategories(newCategoriesList);
+      console.log("Categoria deletada com sucesso 🎉");
     } catch (error) {
       console.log(error);
     }
@@ -155,10 +305,24 @@ export const GlobalProvider = ({ children }) => {
         isLogged,
         loggedUser,
         loginRequest,
-        registerUserRequest,
-        createEventRequest,
-        createCategoryRequest,
         handleLogout,
+        registerUserRequest,
+        createCategoryRequest,
+        editingCategory,
+        setEditingCategory,
+        updateCategoryRequest,
+        deleteCategoryRequest,
+        listEventsRequest,
+        setEditingEvent,
+        editingEvent,
+        createEventRequest,
+        updateEventRequest,
+        createLocationRequest,
+        deleteEventRequest,
+        editingLocation,
+        setEditingLocation,
+        updateLocationRequest,
+        deleteLocationRequest,
       }}
     >
       {children}

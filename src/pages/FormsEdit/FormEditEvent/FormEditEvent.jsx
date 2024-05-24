@@ -2,26 +2,47 @@ import { Box, ButtonGroup, Flex } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import style from "./FormEditEvent.module.css";
 import { SelectCategory, SelectLocation } from "../../../components/index.js";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../../providers/globalContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 export const FormEditEvent = (props) => {
-  const { categories, locations } = useContext(GlobalContext);
+  const { categories, locations, editingEvent, updateEventRequest } =
+    useContext(GlobalContext);
+  const navigate = useNavigate();
+  console.log(editingEvent)
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
+    setValue,
   } = useForm({
     defaultValues: {
-      name: "",
-      description: "",
-      categoryId: "",
-      date: "",
-      locationId: "",
+      name: editingEvent.name,
+      description: editingEvent.description,
+      categoryId: editingEvent.categoryId,
+      date: editingEvent.date,
+      locationId: editingEvent.locationIdd,
+      image: editingEvent.image,
     },
   });
-  const onsubmit = (data) => console.log(data);
+  const onsubmit = (data) => {
+    console.log(data);
+    updateEventRequest(data);
+    navigate("/explore")
+  };
+
+  useEffect(() => {
+    setValue("categoryId", editingEvent.categoryId);
+    setValue("locationId", editingEvent.locationId);
+    if (editingEvent.date) {
+      const formattedDate = new Date(editingEvent.date)
+        .toISOString()
+        .split("T")[0];
+      setValue("date", formattedDate);
+    }
+  }, [editingEvent.date, setValue]);
 
   return (
     <div className={style.formContainer}>

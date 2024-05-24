@@ -56,7 +56,6 @@ export const ToggleContent = () => {
           border={"solid 1px #000"}
           borderRadius={"13px"}
         >
-          <ToggleItem to={"/"}>Explore</ToggleItem>
           <ToggleItem to={"/signup"}>Cadastrar</ToggleItem>
           <ToggleItem to={"/login"}>Entrar</ToggleItem>
         </Stack>

@@ -31,6 +31,7 @@ export const FormCreateEvent = () => {
 
   const onSubmit = (data) => {
     createEventRequest(data);
+    navigate("/explore");
   };
 
   return (
