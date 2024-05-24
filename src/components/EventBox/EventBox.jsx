@@ -21,11 +21,6 @@ export const EventBox = ({ event }) => {
     deleteEventRequest(event.id);
   };
 
-  const convertDate = (dateString) => {
-    const [year, month, day] = dateString.split("-");
-    return `${day}-${month}-${year}`;
-  };
-
   return (
     <Box className={style.Box}>
       <Image src={image} height={"60%"} width={"100%"} borderRadius={"14px"} />
@@ -38,7 +33,7 @@ export const EventBox = ({ event }) => {
         <Flex flexDirection={"column"} gap={["1", " 4"]}>
           <h2 style={{ fontWeight: "bold" }}>{name}</h2>
           <p>{description}</p>
-          <h2>{convertDate(date.slice(0, 10))}</h2>
+          <h2>{date}</h2>
         </Flex>
         <ButtonGroup
           className={style.ButtonGroup}
