@@ -34,11 +34,6 @@
   font-size: 10px;
 }
 
-.eventcard {
-  margin: 40px;
-  padding: 40px;
-}
-
 @media (min-width: 750px) {
   .search {
     height: 100vh;

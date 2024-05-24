@@ -8,6 +8,7 @@ export const EventCard = ({ event }) => {
       borderRadius="lg"
       overflow="hidden"
       width="270px"
+      height="380px"
       boxShadow="lg"
       transition="transform 0.2s"
       _hover={{ transform: "scale(1.05)" }}
