@@ -101,7 +101,12 @@ export const Dashboard = () => {
             >
               Listar todos
             </Button>
-            <Button {...styleButtonEntity}>Pesquisar Locais</Button>
+            <Button
+              {...styleButtonEntity}
+              onClick={() => navigate("/search/location")}
+            >
+              Pesquisar Locais
+            </Button>
             {loggedUser.isAdmin && (
               <>
                 <Button
