@@ -62,7 +62,7 @@ export const SearchEvent = () => {
                 onBlur={onBlur}
                 value={value}
                 ref={ref}
-                placeholder="Insira a categoria"
+                placeholder="Insira o evento"
               />
             )}
           />

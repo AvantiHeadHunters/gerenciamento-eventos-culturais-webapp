@@ -1,11 +1,5 @@
 import { SearchIcon } from "@chakra-ui/icons";
-import {
-  Button,
-  Flex,
-  Input,
-  InputGroup,
-  InputLeftAddon,
-} from "@chakra-ui/react";
+import { Button, Flex, InputGroup, InputLeftAddon } from "@chakra-ui/react";
 import { Controller, useForm } from "react-hook-form";
 import style from "./SearchCategory.module.css";
 import { CategoryBox } from "../../../components";
@@ -17,14 +11,24 @@ export const SearchCategory = () => {
 
   const { control, watch } = useForm();
   const [search, setSearch] = useState(false);
+  const [renderList, setRenderList] = useState(null);
   const value = watch("search");
 
-  const filteredCategories = categories?.filter((category) =>
-    category.name.toLowerCase().includes(value?.toLowerCase()),
-  );
+  const filterCategories = () => {
+    if (!value || value == "") {
+      setRenderList(categories);
+    } else {
+      const filteredList = categories?.filter((category) =>
+        category.name.toLowerCase().includes(value?.toLowerCase())
+      );
+      setRenderList(filteredList);
+    }
+    return renderList;
+  };
 
   const searchFun = (search) => {
-    setSearch((state) => !state);
+    setSearch(true);
+    filterCategories();
   };
 
   return (
@@ -82,7 +86,7 @@ export const SearchCategory = () => {
           <h2 className={style.h2}>Você buscou por &quot;{value}&quot;</h2>
           <Flex className={style.Result}>
             <ul>
-              {filteredCategories.map((category) => (
+              {renderList.map((category) => (
                 <CategoryBox key={category.id} category={category} />
               ))}
             </ul>

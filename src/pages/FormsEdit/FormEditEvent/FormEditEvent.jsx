@@ -1,12 +1,17 @@
-import { Box, ButtonGroup, Flex } from "@chakra-ui/react";
+import { ButtonGroup } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import style from "./FormEditEvent.module.css";
 import { SelectCategory, SelectLocation } from "../../../components/index.js";
 import { useContext } from "react";
 import { GlobalContext } from "../../../providers/globalContext.jsx";
+import { useNavigate } from "react-router-dom";
 
-export const FormEditEvent = (props) => {
-  const { categories, locations } = useContext(GlobalContext);
+export const FormEditEvent = () => {
+  const { categories, locations, editingEvent, updateEventRequest } =
+    useContext(GlobalContext);
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -14,18 +19,22 @@ export const FormEditEvent = (props) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: "",
-      description: "",
-      categoryId: "",
-      date: "",
-      locationId: "",
+      name: editingEvent.name,
+      description: editingEvent.description,
+      categoryId: editingEvent.category_id,
+      date: editingEvent.date.slice(0, 10),
+      locationId: editingEvent.location_id,
     },
   });
-  const onsubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    console.log(data);
+    updateEventRequest(data);
+  };
 
   return (
     <div className={style.formContainer}>
-      <form onSubmit={handleSubmit(onsubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h1>Edite o Evento</h1>
 
         <label>Nome</label>
@@ -61,8 +70,8 @@ export const FormEditEvent = (props) => {
 
         {(errors.name ||
           errors.description ||
-          errors.category_id ||
-          errors.location ||
+          errors.categoryId ||
+          errors.locationId ||
           errors.date) && (
           <span style={errorStyle}>Preencha todos os campos</span>
         )}
@@ -76,6 +85,8 @@ export const FormEditEvent = (props) => {
           <button
             className={style.button}
             style={{ border: "2px solid red", color: "red" }}
+            onClick={() => navigate("/search/event")}
+            type="button"
           >
             Cancelar
           </button>

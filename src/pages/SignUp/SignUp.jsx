@@ -14,10 +14,11 @@ export const SignUp = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ defaultValues: { email: "", password: "", name: "" } });
+  } = useForm({
+    defaultValues: { email: "", password: "", name: "", image: "" },
+  });
 
   const onsubmit = (data) => {
-    console.log(data);
     registerUserRequest(data);
     navigate("/login");
   };
@@ -33,28 +34,47 @@ export const SignUp = () => {
       </div>
 
       <div className={style.formContainer}>
-        <form onSubmit={handleSubmit(onsubmit)}>
+        <form className={style.form} onSubmit={handleSubmit(onsubmit)}>
           <h1>Cadastro</h1>
-          <label>Nome</label>
-          <input
-            type="text"
-            {...register("name", { required: "Insira o nome" })}
-          />
-          <label>Email</label>
-          <input
-            type="email"
-            {...register("email", { required: "Insira o email" })}
-          />
-          <label>Senha</label>
-          <input
-            type={"password"}
-            {...register("password", {
-              required: "Insira a senha",
-              // pattern: /\S+@\S+\.\S+/,
-            })}
-          />
+          <div className={style.inputBox}>
+            <label>Nome</label>
+            <input
+              type="text"
+              {...register("name", { required: "Insira o nome" })}
+              placeholder="Digite seu nome"
+            />
+          </div>
+          <div className={style.inputBox}>
+            <label>Email</label>
+            <input
+              type="email"
+              {...register("email", { required: "Insira o email" })}
+              placeholder="Digite seu email"
+            />
+          </div>
+          <div className={style.inputBox}>
+            <label>Senha</label>
+            <input
+              type={"password"}
+              {...register("password", {
+                required: "Insira a senha",
+                // pattern: /\S+@\S+\.\S+/,
+              })}
+              placeholder="Digite uma senha"
+            />
+          </div>
+          <div className={style.inputBox}>
+            <label>Imagem</label>
+            <input
+              type="text"
+              {...register("image", {
+                required: "Insira o link de uma imagem",
+              })}
+              placeholder="Digite o link de uma imagem"
+            />
+          </div>
 
-          {(errors.name || errors.email || errors.password) && (
+          {(errors.name || errors.email || errors.password || errors.image) && (
             <span
               style={{
                 color: "red",
