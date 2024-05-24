@@ -25,11 +25,11 @@ const CategoryCard = ({ category }) => {
       <Flex
         justifyContent="center"
         p="4"
-        bg="rgba(0, 0, 0, 0.5)" // Ajustando a cor de fundo do texto para que seja semi-transparente
-        position="absolute" // Posicionando o Flex absolutamente dentro do Box
-        bottom="0" // Alinhando o Flex na parte inferior do Box
-        left="0" // Alinhando o Flex à esquerda do Box
-        right="0" // Alinhando o Flex à direita do Box
+        bg="rgba(0, 0, 0, 0.5)"
+        position="absolute"
+        bottom="0"
+        left="0"
+        right="0"
       >
         <Text fontSize="xl" fontWeight="bold" color="white">
           {category.name}
