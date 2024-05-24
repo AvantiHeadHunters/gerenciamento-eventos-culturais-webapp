@@ -100,6 +100,32 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
+  const updateEventRequest = async (formData) => {
+    try {
+      const eventId = editingEvent.id;
+      const token = localStorage.getItem("@eventHunters:token");
+
+      const { data } = await api.put(`/event/${eventId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newEventsList = categories.map((event) => {
+        if (event.id === eventId) {
+          return data;
+        } else {
+          return event;
+        }
+      });
+
+      setEvents(newEventsList);
+      console.log("Evento editado com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const deleteEventRequest = async (deletingId) => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
@@ -254,11 +280,13 @@ export const GlobalProvider = ({ children }) => {
         getEventbyId,
         editingCategory,
         setEditingCategory,
+        editingEvent,
         setEditingEvent,
         updateCategoryRequest,
         deleteCategoryRequest,
         deleteEventRequest,
         listEventsRequest,
+        updateEventRequest,
       }}
     >
       {children}

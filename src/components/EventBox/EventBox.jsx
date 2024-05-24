@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 export const EventBox = ({ event }) => {
   const { name, description, date, image } = event;
   const { setEditingEvent, deleteEventRequest } = useContext(GlobalContext);
+
   const navigate = useNavigate();
 
   const handleUpdateClick = (event) => {
@@ -18,6 +19,11 @@ export const EventBox = ({ event }) => {
 
   const handleDeleteClick = (event) => {
     deleteEventRequest(event.id);
+  };
+
+  const convertDate = (dateString) => {
+    const [year, month, day] = dateString.split("-");
+    return `${day}-${month}-${year}`;
   };
 
   return (
@@ -32,7 +38,7 @@ export const EventBox = ({ event }) => {
         <Flex flexDirection={"column"} gap={["1", " 4"]}>
           <h2 style={{ fontWeight: "bold" }}>{name}</h2>
           <p>{description}</p>
-          <h2>{date}</h2>
+          <h2>{convertDate(date.slice(0, 10))}</h2>
         </Flex>
         <ButtonGroup
           className={style.ButtonGroup}
