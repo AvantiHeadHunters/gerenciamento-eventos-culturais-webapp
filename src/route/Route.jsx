@@ -14,12 +14,13 @@ import {
   Dashboard,
   SearchCategory,
   SearchEvent,
-  // ListCategories,
-  // ListEvents,
-  // ListLocations,
   // SearchLocation,
 } from "../pages/index.js";
-import { ListEvents, ListCategories } from "../pages/ListPages/index.js";
+import {
+  ListEvents,
+  ListCategories,
+  ListLocations,
+} from "../pages/ListPages/index.js";
 
 export const Routers = () => {
   return (
@@ -38,7 +39,7 @@ export const Routers = () => {
         {/* <Route path="/search/location" element={<SearchLocation />} /> */}
         <Route path="/list/categories" element={<ListCategories />} />
         <Route path="/list/events" element={<ListEvents />} />
-        {/* <Route path="/list/locations" element={<ListLocations />} /> */}
+        <Route path="/list/locations" element={<ListLocations />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
       <Route path="/signup" element={<SignUp />} />

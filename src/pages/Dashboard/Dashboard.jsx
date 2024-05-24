@@ -95,7 +95,12 @@ export const Dashboard = () => {
             <h1>Local</h1>
           </Box>
           <ButtonGroup {...styleButtonGroup}>
-            <Button {...styleButtonEntity}>Listar todos</Button>
+            <Button
+              {...styleButtonEntity}
+              onClick={() => navigate("/list/locations")}
+            >
+              Listar todos
+            </Button>
             <Button {...styleButtonEntity}>Pesquisar Locais</Button>
             {loggedUser.isAdmin && (
               <>
