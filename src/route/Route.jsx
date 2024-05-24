@@ -14,6 +14,7 @@ import {
   Dashboard,
   SearchCategory,
   SearchEvent,
+  ResultSearch,
 } from "../pages/index.js";
 
 export const Routers = () => {
@@ -30,6 +31,7 @@ export const Routers = () => {
         <Route path="/form/edit/location" element={<FormEditLocation />} />
         <Route path="/search/category" element={<SearchCategory />} />
         <Route path="/search/event" element={<SearchEvent />} />
+        <Route path="/search-result" element={<ResultSearch />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
       <Route path="/signup" element={<SignUp />} />
