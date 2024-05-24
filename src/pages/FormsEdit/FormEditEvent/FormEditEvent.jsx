@@ -1,19 +1,24 @@
 import { Box, ButtonGroup, Flex } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import style from "./FormEditEvent.module.css";
+import { SelectCategory, SelectLocation } from "../../../components/index.js";
+import { useContext } from "react";
+import { GlobalContext } from "../../../providers/globalContext.jsx";
 
 export const FormEditEvent = (props) => {
+  const { categories, locations } = useContext(GlobalContext);
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm({
     defaultValues: {
       name: "",
       description: "",
-      category_id: "",
+      categoryId: "",
       date: "",
-      location: "",
+      locationId: "",
     },
   });
   const onsubmit = (data) => console.log(data);
@@ -25,6 +30,7 @@ export const FormEditEvent = (props) => {
 
         <label>Nome</label>
         <input
+          className={style.input}
           type="text"
           {...register("name", { required: "Insira o nome do evento" })}
         />
@@ -35,16 +41,22 @@ export const FormEditEvent = (props) => {
           })}
         />
         <label>Categoria</label>
-        <input type={"text"} {...register("category_id", { required: true })} />
+        <SelectCategory
+          control={control}
+          category={categories}
+          name={"categoryId"}
+        />
         <label>Data</label>
         <input
+          className={style.input}
           type="date"
           {...register("date", { required: "Insira a data do evento" })}
         />
         <label>Local</label>
-        <input
-          type="text"
-          {...register("location", { required: "Insira o local" })}
+        <SelectLocation
+          control={control}
+          location={locations}
+          name={"locationId"}
         />
 
         {(errors.name ||

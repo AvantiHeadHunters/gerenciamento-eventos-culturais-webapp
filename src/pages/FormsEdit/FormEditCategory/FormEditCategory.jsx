@@ -1,11 +1,14 @@
 import { ButtonGroup } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import style from "./FormEditCategory.module.css";
-import { useState } from "react";
+import { useContext } from "react";
+import { GlobalContext } from "../../../providers/globalContext";
+import { useNavigate } from "react-router-dom";
 
-export const FormEditCategory = (props) => {
-  const { id } = props;
-  // get category by id
+export const FormEditCategory = () => {
+  const { editingCategory, updateCategoryRequest } = useContext(GlobalContext);
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -13,16 +16,18 @@ export const FormEditCategory = (props) => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: "",
-      description: "",
-      image: "",
+      name: editingCategory.name,
+      description: editingCategory.description,
+      image: editingCategory.image,
     },
   });
-  const onsubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    updateCategoryRequest(data);
+  };
 
   return (
     <div className={style.formContainer}>
-      <form onSubmit={handleSubmit(onsubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h1>Edite a Categoria</h1>
         <label>Nome</label>
         <input
@@ -54,6 +59,7 @@ export const FormEditCategory = (props) => {
           <button
             className={style.button}
             style={{ border: "2px solid red", color: "red" }}
+            onClick={navigate("/search/category")}
           >
             Cancelar
           </button>

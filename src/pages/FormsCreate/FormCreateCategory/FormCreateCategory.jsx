@@ -1,8 +1,15 @@
 import { ButtonGroup } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
 import style from "./FormCreateCategory.module.css";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { GlobalContext } from "../../../providers/globalContext";
 
 export const FormCreateCategory = () => {
+  const { createCategoryRequest } = useContext(GlobalContext);
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -12,11 +19,15 @@ export const FormCreateCategory = () => {
     description: "",
     image: "",
   });
-  const onsubmit = (data) => console.log(data);
+
+  const onSubmit = (data) => {
+    createCategoryRequest(data);
+    navigate("/explore");
+  };
 
   return (
     <div className={style.formContainer}>
-      <form onSubmit={handleSubmit(onsubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h1>Crie uma Categoria</h1>
         <label>Nome</label>
         <input
@@ -46,6 +57,9 @@ export const FormCreateCategory = () => {
           <button
             className={style.button}
             style={{ border: "2px solid red", color: "red" }}
+            onClick={() => {
+              navigate("/explore");
+            }}
           >
             Cancelar
           </button>

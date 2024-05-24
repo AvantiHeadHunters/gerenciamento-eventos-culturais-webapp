@@ -6,26 +6,30 @@ import {
   InputGroup,
   InputLeftAddon,
 } from "@chakra-ui/react";
-import image from "../../../assets/img/marriage.jpg";
 import { Controller, useForm } from "react-hook-form";
 import style from "./SearchEvent.module.css";
 import { EventBox } from "../../../components";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { GlobalContext } from "../../../providers/globalContext";
 
 export const SearchEvent = () => {
   const { control, watch } = useForm();
   const [search, setSearch] = useState(false);
   const value = watch("search");
-  const event = {
-    name: "Casamento dos Vasques",
-    description: "Venha prestigiar o casamento de uma família muito querida",
-    date: new Date().toLocaleTimeString(),
-    image: image,
-    location: 1,
-  };
+  const valueDate = watch("searchDate");
+  const { events, listEventsRequest } = useContext(GlobalContext);
 
   const searchFun = (search) => {
-    setSearch((state) => !state);
+    const params = {};
+
+    if (value) {
+      params.name = value;
+    }
+    if (valueDate) {
+      params.date = valueDate;
+    }
+    setSearch(true);
+    listEventsRequest(params);
   };
 
   return (
@@ -68,7 +72,19 @@ export const SearchEvent = () => {
           alignItems={"center"}
           width={"100%"}
         >
-          <Input type="date" />
+          <Controller
+            name="searchDate"
+            control={control}
+            render={({ field: { onChange, onBlur, value, ref } }) => (
+              <Input
+                type="date"
+                onChange={onChange}
+                onBlur={onBlur}
+                value={value}
+                ref={ref}
+              />
+            )}
+          />
           <Button
             className={style.ButtonSearch}
             onClick={() => searchFun(value)}
@@ -76,10 +92,8 @@ export const SearchEvent = () => {
             Pesquisar
           </Button>
         </Flex>
-
-        {console.log(value)}
       </Flex>
-      {search && (
+      {search ? (
         <Flex
           className={style.SearchResultContainer}
           width={"100%"}
@@ -88,11 +102,16 @@ export const SearchEvent = () => {
         >
           <h1 className={style.title}>Resultados da sua Busca</h1>
           <h2 className={style.h2}>Você buscou por &quot;{value}&quot;</h2>
+
           <Flex className={style.Result}>
-            <EventBox event={event} />
+            <ul>
+              {events.map((event) => (
+                <EventBox key={event.id} event={event} />
+              ))}
+            </ul>
           </Flex>
         </Flex>
-      )}
+      ) : null}
     </Flex>
   );
 };
