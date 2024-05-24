@@ -1,5 +1,5 @@
 .Header {
-  padding: 30px;
+  padding: 20px;
   display: flex;
   flex-direction: "row";
   align-items: "baseline";
@@ -8,15 +8,10 @@
   z-index: 99;
   width: 100%;
   transition: background-color 0.3s ease;
-  /*background-color: transparent;*/
 }
 
 .Header.scrolled:not(.logged) {
-  background-color: #fff;
-}
-
-.Header.scrolled.logged {
-  background-color: #000;
+  background-color: #ffffff;
 }
 
 .Header h1 {
@@ -27,22 +22,6 @@
 
 .span {
   color: var(--color-primary);
-}
-
-.NavBar {
-  display: flex;
-  align-items: center;
-}
-
-.NavBarItem {
-  font-family: var(--font-primary);
-  margin: 5px;
-  padding: 10px;
-  padding-left: 7px;
-  padding-right: 7px;
-  font-weight: 500;
-  border: solid 1px var(--grey-5);
-  border-radius: 14px;
 }
 
 .NavBarItem:hover {

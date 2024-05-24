@@ -1,28 +1,75 @@
-import { Flex, HStack, useDisclosure } from "@chakra-ui/react";
+import { useState, useEffect, useContext } from "react";
+import { Flex, HStack, useDisclosure, Button } from "@chakra-ui/react";
 import { Toggle, ToggleContent } from "./Toggle";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import style from "./header.module.css";
 import Proptypes from "prop-types";
-import { useContext } from "react";
 import { GlobalContext } from "../../providers/globalContext";
 
-export const NavBar = (props) => {
+export const NavBar = () => {
   const { isLogged, handleLogout } = useContext(GlobalContext);
   const { isOpen, onToggle } = useDisclosure();
+  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+
+  const isHomePage = location.pathname === "/";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    if (isHomePage) {
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }
+  }, [isHomePage]);
+
+  const fontColor = isHomePage ? (scrolled ? "black" : "white") : "white";
+
   return (
     <>
-      {isLogged ? (
-        <Flex className={style.NavBar} display={{ base: "none", md: "flex" }}>
-          <NavBarItem to={"/"} name={"Página Inicial"} logged />
-          <NavBarItem to={"/explore"} name={"Dashboard"} logged />
-          <NavBarItem to={"/"} name={"Logout"} logout onClick={handleLogout} />
-        </Flex>
-      ) : (
-        <Flex className={style.NavBar} display={{ base: "none", md: "flex" }}>
-          <NavBarItem to={"/signup"} name={"Cadastre-se"} />
-          <NavBarItem to={"/login"} name={"Entrar"} bold />
-        </Flex>
-      )}
+      <Flex className={style.NavBar} display={{ base: "none", md: "flex" }}>
+        {isLogged ? (
+          <>
+            <NavBarItem
+              to="/"
+              name="Página Inicial"
+              fontColor={fontColor}
+              scrolled={scrolled}
+            />
+            <NavBarItem
+              to="/explore"
+              name="Dashboard"
+              fontColor={fontColor}
+              scrolled={scrolled}
+            />
+            <NavBarItem
+              to="/"
+              name="Logout"
+              fontColor={fontColor}
+              logout
+              scrolled={scrolled}
+              onClick={handleLogout}
+            />
+          </>
+        ) : (
+          <>
+            <NavBarItem
+              to="/signup"
+              name="Cadastre-se"
+              fontColor={fontColor}
+              scrolled={scrolled}
+            />
+            <NavBarItem
+              to="/login"
+              name="Entrar"
+              fontColor={fontColor}
+              scrolled={scrolled}
+            />
+          </>
+        )}
+      </Flex>
       <HStack
         display={{ base: "flex", md: "none" }}
         position={"absolute"}
@@ -36,40 +83,39 @@ export const NavBar = (props) => {
   );
 };
 
-const NavBarItem = ({ name, to, bold, logged, logout, onClick }) => {
-  const styleButton = {
-    backgroundColor: (bold && "#000") || (logged && "#000"),
-    color: (bold && "white") || (logged && "white") || (logout && "yellow"),
-    borderRadius: bold && 10,
-    border:
-      (bold && "1px solid white") ||
-      (logged && "none") ||
-      (logout && "1px yellow solid"),
-    paddingHorizontal: 25,
-    paddingVertical: 30,
-  };
-
+const NavBarItem = ({ name, to, fontColor, logout, onClick, scrolled }) => {
   return (
     <Link to={to}>
-      <button
-        className={style.NavBarItem}
-        style={styleButton}
+      <Button
+        variant="ghost"
+        _hover={{
+          bg: scrolled ? "var(--color-primary)" : "purple.500",
+        }}
+        _active={{
+          bg: scrolled ? "red.800" : "blue.900",
+        }}
         onClick={onClick}
+        className={style.NavBarItem}
+        style={{
+          color: fontColor,
+          fontWeight: logout ? "bold" : "normal",
+        }}
       >
         {name}
-      </button>
+      </Button>
     </Link>
   );
 };
 
 NavBarItem.propTypes = {
-  name: Proptypes.string,
-  to: Proptypes.string,
-  bold: Proptypes.bool,
-  logged: Proptypes.bool,
+  name: Proptypes.string.isRequired,
+  to: Proptypes.string.isRequired,
+  fontColor: Proptypes.string.isRequired,
   logout: Proptypes.bool,
-}.isRequired;
+  onClick: Proptypes.func,
+  scrolled: Proptypes.bool.isRequired,
+};
 
 NavBar.propTypes = {
-  isLogged: Proptypes.bool,
-}.isRequired;
+  isLogged: Proptypes.bool.isRequired,
+};
