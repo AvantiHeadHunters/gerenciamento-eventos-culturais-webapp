@@ -143,6 +143,8 @@ export const GlobalProvider = ({ children }) => {
         registerUserRequest,
         createEventRequest,
         handleLogout,
+        listEventsRequest,
+        setEvents,
       }}
     >
       {children}
