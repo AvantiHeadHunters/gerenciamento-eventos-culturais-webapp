@@ -65,7 +65,12 @@ export const Dashboard = () => {
             <h1>Categoria</h1>
           </Box>
           <ButtonGroup {...styleButtonGroup}>
-            <Button {...styleButtonEntity}>Listar todos</Button>
+            <Button
+              {...styleButtonEntity}
+              onClick={() => navigate("/list/categories")}
+            >
+              Listar todas
+            </Button>
             <Button
               {...styleButtonEntity}
               onClick={() => navigate("/search/category")}

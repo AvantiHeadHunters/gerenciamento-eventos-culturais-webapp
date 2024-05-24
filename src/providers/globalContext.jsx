@@ -191,11 +191,12 @@ export const GlobalProvider = ({ children }) => {
   const createCategoryRequest = async (formData) => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
-      await api.post("/category", formData, {
+      const { data } = await api.post("/category", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      setCategories([data, ...categories]);
       console.log("Categoria criada com sucesso 🎉");
     } catch (error) {
       console.log(error);
