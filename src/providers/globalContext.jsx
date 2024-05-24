@@ -238,7 +238,7 @@ export const GlobalProvider = ({ children }) => {
       });
 
       const newCategoriesList = categories.filter(
-        (category) => category.id !== deletingId
+        (category) => category.id !== deletingId,
       );
 
       setCategories(newCategoriesList);
