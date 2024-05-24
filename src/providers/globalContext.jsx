@@ -9,7 +9,6 @@ export const GlobalProvider = ({ children }) => {
   const [events, setEvents] = useState([]);
   const [locations, setLocations] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [editingCategory, setEditingCategory] = useState(null);
   const [users, setUsers] = useState([]);
   const [loggedUser, setLoggedUser] = useState(null);
   const [isLogged, setIsLogged] = useState(false);
@@ -22,6 +21,7 @@ export const GlobalProvider = ({ children }) => {
     listUsersRequest();
     setIsLogged(JSON.parse(localStorage.getItem("@eventHunters:isLogged")));
     setLoggedUser(JSON.parse(localStorage.getItem("@eventHunters:user")));
+
   }, []);
 
   const loginRequest = async (formData) => {
@@ -82,20 +82,26 @@ export const GlobalProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("Evento criado com sucesso 🎉");
+      console.log("Evento cadastrado com sucesso 🎉");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const getEventbyId = async (id) => {
+  const createCategoryRequest = async (formData) => {
     try {
-      const { data } = await api.get(`/event/${Number(id)}`);
-      return data;
+      const token = localStorage.getItem("@eventHunters:token");
+      await api.post("/category", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("Categoria cadastrada com sucesso 🎉");
     } catch (error) {
       console.log(error);
     }
   };
+
 
   const listLocationsRequest = async () => {
     try {
@@ -111,20 +117,6 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
-  const createLocationRequest = async (formData) => {
-    try {
-      const token = localStorage.getItem("@eventHunters:token");
-      await api.post("/location", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log("Local criado com sucesso 🎉");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   const listCategoriesRequest = async () => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
@@ -134,67 +126,6 @@ export const GlobalProvider = ({ children }) => {
         },
       });
       setCategories([...data]);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const createCategoryRequest = async (formData) => {
-    try {
-      const token = localStorage.getItem("@eventHunters:token");
-      await api.post("/category", formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log("Categoria criada com sucesso 🎉");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const updateCategoryRequest = async (formData) => {
-    try {
-      const categoryId = editingCategory.id;
-      const token = localStorage.getItem("@eventHunters:token");
-
-      const { data } = await api.put(`/category/${categoryId}`, formData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const newCategoriesList = categories.map((contact) => {
-        if (contact.id === editingCategory.id) {
-          return data;
-        } else {
-          return contact;
-        }
-      });
-
-      setCategories(newCategoriesList);
-      console.log("Categoria editada com sucesso 🎉");
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const deleteCategoryRequest = async (deletingId) => {
-    try {
-      const token = localStorage.getItem("@eventHunters:token");
-
-      await api.delete(`/category/${deletingId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const newCategoriesList = categories.filter(
-        (category) => category.id !== deletingId,
-      );
-
-      setCategories(newCategoriesList);
-      console.log("Categoria deletada com sucesso 🎉");
     } catch (error) {
       console.log(error);
     }
@@ -227,13 +158,7 @@ export const GlobalProvider = ({ children }) => {
         registerUserRequest,
         createEventRequest,
         createCategoryRequest,
-        createLocationRequest,
         handleLogout,
-        getEventbyId,
-        editingCategory,
-        setEditingCategory,
-        updateCategoryRequest,
-        deleteCategoryRequest,
       }}
     >
       {children}
