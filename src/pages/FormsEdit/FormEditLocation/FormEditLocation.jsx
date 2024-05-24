@@ -3,27 +3,40 @@ import { useForm } from "react-hook-form";
 import style from "./FormEditLocation.module.css";
 
 import { States } from "./States.js";
+import { useContext } from "react";
+import { GlobalContext } from "../../../providers/globalContext.jsx";
+import { useNavigate } from "react-router-dom";
 
 export const FormEditLocation = (props) => {
+  const { editingLocation, updateLocationRequest } = useContext(GlobalContext);
+
+  console.log(editingLocation);
+
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
     defaultValues: {
-      name: "",
-      cep: "",
-      address: "",
-      city: "",
-      state: "",
-      link_maps: "",
+      name: editingLocation.name,
+      zipCode: editingLocation.zip_code,
+      address: editingLocation.address,
+      city: editingLocation.city,
+      state: editingLocation.state,
+      linkMaps: editingLocation.link_maps,
+      image: editingLocation.image,
     },
   });
-  const onsubmit = (data) => console.log(data);
+  const onSubmit = (data) => {
+    updateLocationRequest(data);
+    navigate("/list/locations");
+  };
 
   return (
     <div className={style.formContainer}>
-      <form onSubmit={handleSubmit(onsubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h1>Edite o Local</h1>
         <label>Nome</label>
         <input
@@ -33,7 +46,7 @@ export const FormEditLocation = (props) => {
         <label>CEP</label>
         <input
           type="text"
-          {...register("cep", { required: "Insira o cep do local" })}
+          {...register("zipCode", { required: "Insira o cep do local" })}
         />
 
         <label>Endereço</label>
@@ -61,16 +74,24 @@ export const FormEditLocation = (props) => {
         <label>Link do Google Maps</label>
         <input
           type="text"
-          {...register("link_maps", {
+          {...register("linkMaps", {
             required: "Insira o link do maps do local",
           })}
         />
 
+        <label>Imagem</label>
+        <input
+          type="text"
+          {...register("image", { required: "Insira o link de uma imagem" })}
+        />
+
         {(errors.name ||
           errors.address ||
-          errors.cep ||
+          errors.zipCode ||
           errors.state ||
-          errors.city) && (
+          errors.city ||
+          errors.linkMaps ||
+          errors.image) && (
           <span style={errorStyle}>Preencha todos os campos</span>
         )}
 
@@ -83,6 +104,8 @@ export const FormEditLocation = (props) => {
           <button
             className={style.button}
             style={{ border: "2px solid red", color: "red" }}
+            type="button"
+            onClick={() => navigate("/explore")}
           >
             Cancelar
           </button>

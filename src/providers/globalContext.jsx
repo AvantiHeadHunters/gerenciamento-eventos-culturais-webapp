@@ -11,6 +11,7 @@ export const GlobalProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [editingCategory, setEditingCategory] = useState(null);
   const [editingEvent, setEditingEvent] = useState(null);
+  const [editingLocation, setEditingLocation] = useState(null);
   const [users, setUsers] = useState([]);
   const [loggedUser, setLoggedUser] = useState(null);
   const [isLogged, setIsLogged] = useState(false);
@@ -80,11 +81,12 @@ export const GlobalProvider = ({ children }) => {
   const createEventRequest = async (formData) => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
-      await api.post("/event", formData, {
+      const { data } = await api.post("/event", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      setEvents([data, ...events]);
       console.log("Evento criado com sucesso 🎉");
     } catch (error) {
       console.log(error);
@@ -111,7 +113,7 @@ export const GlobalProvider = ({ children }) => {
         },
       });
 
-      const newEventsList = categories.map((event) => {
+      const newEventsList = events.map((event) => {
         if (event.id === eventId) {
           return data;
         } else {
@@ -162,12 +164,59 @@ export const GlobalProvider = ({ children }) => {
   const createLocationRequest = async (formData) => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
-      await api.post("/location", formData, {
+      const { data } = await api.post("/location", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      setLocations([data, ...locations]);
       console.log("Local criado com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const updateLocationRequest = async (formData) => {
+    try {
+      const locationId = editingLocation.id;
+      const token = localStorage.getItem("@eventHunters:token");
+
+      const { data } = await api.put(`/location/${locationId}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newLocationsList = locations.map((location) => {
+        if (location.id === editingLocation.id) {
+          return data;
+        } else {
+          return location;
+        }
+      });
+
+      setLocations(newLocationsList);
+      console.log("Local editado com sucesso 🎉");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteLocationRequest = async (deletingId) => {
+    try {
+      const token = localStorage.getItem("@eventHunters:token");
+
+      await api.delete(`/location/${deletingId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const newLocationList = locations.filter(
+        (location) => location.id !== deletingId
+      );
+      setLocations(newLocationList);
+      console.log("Local deletado com sucesso 🎉");
     } catch (error) {
       console.log(error);
     }
@@ -190,11 +239,12 @@ export const GlobalProvider = ({ children }) => {
   const createCategoryRequest = async (formData) => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
-      await api.post("/category", formData, {
+      const { data } = await api.post("/category", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      setCategories([data, ...categories]);
       console.log("Categoria criada com sucesso 🎉");
     } catch (error) {
       console.log(error);
@@ -238,7 +288,7 @@ export const GlobalProvider = ({ children }) => {
       });
 
       const newCategoriesList = categories.filter(
-        (category) => category.id !== deletingId,
+        (category) => category.id !== deletingId
       );
 
       setCategories(newCategoriesList);
@@ -280,14 +330,18 @@ export const GlobalProvider = ({ children }) => {
         setEvents,
         getEventbyId,
         editingCategory,
-        setEditingCategory,
         editingEvent,
+        editingLocation,
+        setEditingCategory,
+        setEditingLocation,
         setEditingEvent,
         updateCategoryRequest,
         deleteCategoryRequest,
         deleteEventRequest,
         listEventsRequest,
         updateEventRequest,
+        deleteLocationRequest,
+        updateLocationRequest,
       }}
     >
       {children}
