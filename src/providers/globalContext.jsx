@@ -65,9 +65,11 @@ export const GlobalProvider = ({ children }) => {
     }
   };
 
-  const listEventsRequest = async () => {
+  const listEventsRequest = async (params = {}) => {
     try {
-      const { data = [] } = await api.get("/events");
+      const { data = [] } = await api.get("/events", {
+        params,
+      });
       setEvents([...data]);
     } catch (error) {
       console.log(error);
@@ -190,7 +192,7 @@ export const GlobalProvider = ({ children }) => {
       });
 
       const newCategoriesList = categories.filter(
-        (category) => category.id !== deletingId,
+        (category) => category.id !== deletingId
       );
 
       setCategories(newCategoriesList);
@@ -234,6 +236,7 @@ export const GlobalProvider = ({ children }) => {
         setEditingCategory,
         updateCategoryRequest,
         deleteCategoryRequest,
+        listEventsRequest
       }}
     >
       {children}

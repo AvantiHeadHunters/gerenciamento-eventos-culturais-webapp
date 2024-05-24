@@ -27,14 +27,14 @@ export const FormCreateLocation = () => {
     },
   });
 
-  const onsubmit = (data) => {
+  const onSubmit = (data) => {
     createLocationRequest(data);
     navigate("/explore");
   };
 
   return (
     <div className={style.formContainer}>
-      <form onSubmit={handleSubmit(onsubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h1>Crie um Local</h1>
         <label>Nome</label>
         <input

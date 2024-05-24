@@ -20,7 +20,7 @@ export const SearchCategory = () => {
   const value = watch("search");
 
   const filteredCategories = categories?.filter((category) =>
-    category.name.toLowerCase().includes(value?.toLowerCase()),
+    category.name.toLowerCase().includes(value?.toLowerCase())
   );
 
   const searchFun = (search) => {
@@ -83,9 +83,7 @@ export const SearchCategory = () => {
           <Flex className={style.Result}>
             <ul>
               {filteredCategories.map((category) => (
-                // <li>
                 <CategoryBox key={category.id} category={category} />
-                // </li>
               ))}
             </ul>
           </Flex>
