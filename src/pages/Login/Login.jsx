@@ -29,24 +29,26 @@ export const Login = () => {
         </h1>
       </div>
       <div className={style.formContainer}>
-        <form onSubmit={handleSubmit(onsubmit)}>
+        <form className={style.form} onSubmit={handleSubmit(onsubmit)}>
           <h1>Login</h1>
 
-          <label>Email</label>
-
-          <input
-            type="email"
-            {...register("email", {
-              required: "Insira o email",
-              pattern: /\S+@\S+\.\S+/,
-            })}
-          />
-
-          <label>Senha</label>
-          <input
-            type={"password"}
-            {...register("password", { required: "Insira a senha" })}
-          />
+          <div className={style.inputBox}>
+            <label>Email</label>
+            <input
+              type="email"
+              {...register("email", {
+                required: "Insira o email",
+                pattern: /\S+@\S+\.\S+/,
+              })}
+            />
+          </div>
+          <div className={style.inputBox}>
+            <label>Senha</label>
+            <input
+              type={"password"}
+              {...register("password", { required: "Insira a senha" })}
+            />
+          </div>
 
           {(errors.password || errors.email) && (
             <Text
