@@ -14,6 +14,7 @@ import {
   Dashboard,
   SearchCategory,
   SearchEvent,
+  ResultSearch,
   SearchLocation,
 } from "../pages/index.js";
 import {
@@ -36,6 +37,7 @@ export const Routers = () => {
         <Route path="/form/edit/location" element={<FormEditLocation />} />
         <Route path="/search/category" element={<SearchCategory />} />
         <Route path="/search/event" element={<SearchEvent />} />
+        <Route path="/search-result" element={<ResultSearch />} />
         <Route path="/search/location" element={<SearchLocation />} />
         <Route path="/list/categories" element={<ListCategories />} />
         <Route path="/list/events" element={<ListEvents />} />

@@ -15,6 +15,7 @@ import { SignUp } from "./SignUp/SignUp";
 import { PageNotFound } from "./pagenotfound/PageNotFound.jsx";
 import { InitialPage } from "./InitialPage/InitialPage.jsx";
 import { Dashboard } from "./Dashboard/Dashboard.jsx";
+import { ResultSearch } from "./ResultSearch/ResultSearch.jsx";
 
 export {
   InitialPage,
@@ -31,4 +32,5 @@ export {
   SignUp,
   PageNotFound,
   Dashboard,
+  ResultSearch,
 };

@@ -1,5 +1,9 @@
 import { SearchIcon } from "@chakra-ui/icons";
 import image from "../../assets/img/marriage.jpg";
+import style from "./InitialPage.module.css";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import {
   Flex,
   IconButton,
@@ -12,7 +16,6 @@ import {
   SimpleGrid,
 } from "@chakra-ui/react";
 import Slider from "react-slick";
-import style from "./InitialPage.module.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { EventCard } from "../../components/EventCard/EventCard";
@@ -141,6 +144,13 @@ export const InitialPage = () => {
     ],
   };
 
+  const [searchEvents, setSearchEvents] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearchChange = ({ target }) => {
+    setSearchEvents(target.value);
+  };
+
   return (
     <div className={style.container}>
       <Flex
@@ -169,6 +179,8 @@ export const InitialPage = () => {
             background={"white"}
             type="text"
             placeholder="Pesquise seu evento"
+            value={searchEvents}
+            onChange={handleSearchChange}
           />
         </InputGroup>
         <Button
@@ -185,6 +197,9 @@ export const InitialPage = () => {
               backgroundColor: "#9370DB",
             },
           }}
+          onClick={() =>
+            navigate("/search-result", { state: { query: searchEvents } })
+          }
         >
           Pesquisar
         </Button>
