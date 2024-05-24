@@ -29,7 +29,7 @@ export const FormEditEvent = () => {
 
   const onSubmit = (data) => {
     updateEventRequest(data);
-    navigate("/search/event");
+    navigate("/explore");
   };
 
   return (

@@ -34,7 +34,12 @@ export const Dashboard = () => {
             <h1>Evento</h1>
           </Box>
           <ButtonGroup {...styleButtonGroup}>
-            <Button {...styleButtonEntity}>Listar todos</Button>
+            <Button
+              {...styleButtonEntity}
+              onClick={() => navigate("/list/events")}
+            >
+              Listar todos
+            </Button>
             <Button
               {...styleButtonEntity}
               onClick={() => navigate("/search/event")}

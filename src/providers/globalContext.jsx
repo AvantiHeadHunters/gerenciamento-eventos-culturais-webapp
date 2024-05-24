@@ -80,11 +80,12 @@ export const GlobalProvider = ({ children }) => {
   const createEventRequest = async (formData) => {
     try {
       const token = localStorage.getItem("@eventHunters:token");
-      await api.post("/event", formData, {
+      const { data } = await api.post("/event", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      setEvents([data, ...events]);
       console.log("Evento criado com sucesso 🎉");
     } catch (error) {
       console.log(error);
@@ -111,7 +112,7 @@ export const GlobalProvider = ({ children }) => {
         },
       });
 
-      const newEventsList = categories.map((event) => {
+      const newEventsList = events.map((event) => {
         if (event.id === eventId) {
           return data;
         } else {
@@ -238,7 +239,7 @@ export const GlobalProvider = ({ children }) => {
       });
 
       const newCategoriesList = categories.filter(
-        (category) => category.id !== deletingId,
+        (category) => category.id !== deletingId
       );
 
       setCategories(newCategoriesList);

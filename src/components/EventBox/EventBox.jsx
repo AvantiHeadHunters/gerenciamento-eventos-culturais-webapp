@@ -8,7 +8,8 @@ import { useNavigate } from "react-router-dom";
 
 export const EventBox = ({ event }) => {
   const { name, description, date, image } = event;
-  const { setEditingEvent, deleteEventRequest } = useContext(GlobalContext);
+  const { setEditingEvent, deleteEventRequest, loggedUser } =
+    useContext(GlobalContext);
 
   const navigate = useNavigate();
 
@@ -35,24 +36,26 @@ export const EventBox = ({ event }) => {
           <p>{description}</p>
           <h2>{date}</h2>
         </Flex>
-        <ButtonGroup
-          className={style.ButtonGroup}
-          flexDirection={"column"}
-          gap={[2, 4]}
-          size={["xs", "sm", "md"]}
-        >
-          <IconButton
-            icon={<EditIcon />}
+        {loggedUser.isAdmin ? (
+          <ButtonGroup
+            className={style.ButtonGroup}
+            flexDirection={"column"}
+            gap={[2, 4]}
             size={["xs", "sm", "md"]}
-            onClick={() => handleUpdateClick(event)}
-          />
+          >
+            <IconButton
+              icon={<EditIcon />}
+              size={["xs", "sm", "md"]}
+              onClick={() => handleUpdateClick(event)}
+            />
 
-          <IconButton
-            icon={<DeleteIcon />}
-            size={["xs", "sm", "md"]}
-            onClick={() => handleDeleteClick(event)}
-          />
-        </ButtonGroup>
+            <IconButton
+              icon={<DeleteIcon />}
+              size={["xs", "sm", "md"]}
+              onClick={() => handleDeleteClick(event)}
+            />
+          </ButtonGroup>
+        ) : null}
       </Flex>
     </Box>
   );
