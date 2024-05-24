@@ -28,8 +28,8 @@ export const FormEditEvent = () => {
   });
 
   const onSubmit = (data) => {
-    console.log(data);
     updateEventRequest(data);
+    navigate("/explore");
   };
 
   return (
