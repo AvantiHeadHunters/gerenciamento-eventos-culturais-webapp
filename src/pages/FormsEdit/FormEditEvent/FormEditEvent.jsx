@@ -85,7 +85,8 @@ export const FormEditEvent = () => {
           <button
             className={style.button}
             style={{ border: "2px solid red", color: "red" }}
-            onClick={navigate("/search/event")}
+            onClick={() => navigate("/search/event")}
+            type="button"
           >
             Cancelar
           </button>
