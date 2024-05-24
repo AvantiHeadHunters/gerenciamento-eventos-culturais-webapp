@@ -3,6 +3,7 @@ import { GlobalContext } from "../../providers/globalContext";
 import { useContext } from "react";
 import { Box, Text, SimpleGrid } from "@chakra-ui/react";
 import { EventCard } from "../../components/EventCard/EventCard";
+import style from "./resultSearch.module.css";
 
 export const ResultSearch = () => {
   const { events } = useContext(GlobalContext);
@@ -14,11 +15,11 @@ export const ResultSearch = () => {
   });
 
   return (
-    <div>
+    <div className={style.container}>
       <Text fontWeight="bold" fontSize="3xl" mb="4">
         Resultado da busca
       </Text>
-      {searchQuery > 0 && filteredEvents.length > 0 ? (
+      {searchQuery.length > 0 && filteredEvents.length > 0 ? (
         <>
           <Text> Você buscou por: {searchQuery}</Text>
           {filteredEvents.map((event) => (
