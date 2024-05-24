@@ -231,13 +231,13 @@ export const GlobalProvider = ({ children }) => {
         createCategoryRequest,
         createLocationRequest,
         handleLogout,
-        listEventsRequest,
         setEvents,
         getEventbyId,
         editingCategory,
         setEditingCategory,
         updateCategoryRequest,
         deleteCategoryRequest,
+        listEventsRequest,
       }}
     >
       {children}
