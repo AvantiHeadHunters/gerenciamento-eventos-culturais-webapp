@@ -3,6 +3,16 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export const EventCard = ({ event }) => {
+  const date = event?.date.slice(0, 10);
+
+  const convertDateToBrazilianFormat = (dateStr) => {
+    if (!dateStr) return "";
+    const [year, month, day] = dateStr.split("-");
+    return `${day}-${month}-${year}`;
+  };
+
+  const formatedDate = convertDateToBrazilianFormat(date);
+
   return (
     <Box
       borderWidth="1px"
@@ -14,7 +24,7 @@ export const EventCard = ({ event }) => {
       transition="transform 0.2s"
       _hover={{ transform: "scale(1.05)" }}
     >
-      <Link to={`/events/${event.name}`} style={{ textDecoration: "none" }}>
+      <Link style={{ textDecoration: "none" }} to={`/event/${event.id}`}>
         <Image
           src={event.image}
           alt={event.name}
@@ -28,7 +38,7 @@ export const EventCard = ({ event }) => {
             </Text>
             <Text>{event.description}</Text>
             <Text color="gray.500" fontSize="sm">
-              {event.date}
+              {formatedDate}
             </Text>
           </Stack>
         </Box>
