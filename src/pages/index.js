@@ -17,6 +17,7 @@ import { InitialPage } from "./InitialPage/InitialPage.jsx";
 import { Dashboard } from "./Dashboard/Dashboard.jsx";
 import { ResultSearch } from "./ResultSearch/ResultSearch.jsx";
 import { EventPage } from "./EventPage/EventPage.jsx";
+import { CategoriesPage } from "./CategoriesPage/CategoriesPage.jsx";
 
 export {
   InitialPage,
@@ -35,4 +36,5 @@ export {
   Dashboard,
   ResultSearch,
   EventPage,
+  CategoriesPage,
 };
