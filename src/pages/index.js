@@ -16,6 +16,7 @@ import { PageNotFound } from "./pagenotfound/PageNotFound.jsx";
 import { InitialPage } from "./InitialPage/InitialPage.jsx";
 import { Dashboard } from "./Dashboard/Dashboard.jsx";
 import { ResultSearch } from "./ResultSearch/ResultSearch.jsx";
+import { EventPage } from "./EventPage/EventPage.jsx";
 
 export {
   InitialPage,
@@ -33,4 +34,5 @@ export {
   PageNotFound,
   Dashboard,
   ResultSearch,
+  EventPage,
 };
