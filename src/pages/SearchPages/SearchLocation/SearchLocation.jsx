@@ -19,7 +19,7 @@ export const SearchLocation = () => {
       setRenderList(locations);
     } else {
       const filteredList = locations?.filter((location) =>
-        location.name.toLowerCase().includes(value?.toLowerCase())
+        location.name.toLowerCase().includes(value?.toLowerCase()),
       );
       setRenderList(filteredList);
     }

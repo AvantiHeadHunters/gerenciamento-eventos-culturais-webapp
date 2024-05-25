@@ -213,7 +213,7 @@ export const GlobalProvider = ({ children }) => {
       });
 
       const newLocationList = locations.filter(
-        (location) => location.id !== deletingId
+        (location) => location.id !== deletingId,
       );
       setLocations(newLocationList);
       console.log("Local deletado com sucesso 🎉");
@@ -288,7 +288,7 @@ export const GlobalProvider = ({ children }) => {
       });
 
       const newCategoriesList = categories.filter(
-        (category) => category.id !== deletingId
+        (category) => category.id !== deletingId,
       );
 
       setCategories(newCategoriesList);

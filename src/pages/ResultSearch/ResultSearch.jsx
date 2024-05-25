@@ -16,31 +16,39 @@ export const ResultSearch = () => {
 
   return (
     <div className={style.container}>
-      <Text fontWeight="bold" fontSize="3xl" mb="4">
+      <Text fontWeight="bold" fontSize="3xl" mb="4" padding="10px 30px 0">
         Resultado da busca
       </Text>
       {searchQuery.length > 0 && filteredEvents.length > 0 ? (
         <>
-          <Text> Você buscou por: {searchQuery}</Text>
-          {filteredEvents.map((event) => (
-            <Box key={event.id} padding="10px" margin="10px 0">
-              <EventCard event={event} />
-            </Box>
-          ))}
+          <Box margin="0" padding="0 30px">
+            <Text padding="0 0 10px 0">Você buscou por: {searchQuery}</Text>
+            <SimpleGrid
+              columns={{ base: 1, sm: 1, md: 2, lg: 3, xl: 4 }}
+              spacing="5"
+              padding="10px"
+              margin="10px 0"
+            >
+              {filteredEvents.map((event) => (
+                <Box key={event.id} padding="10px" margin="10px 0">
+                  <EventCard event={event} />
+                </Box>
+              ))}
+            </SimpleGrid>
+          </Box>
         </>
       ) : (
         <div>
-          <Text>
-            Não foi encontrado nenhum evento com o termo: {searchQuery}
-          </Text>
-          <Text fontWeight="bold" fontSize="3xl" mb="4">
-            Recomendados
-          </Text>
-          {
+          <Box margin="0" padding="0 30px">
+            <Text padding="0 0 10px 0">
+              Não foi encontrado nenhum evento com o termo: {searchQuery}
+            </Text>
+            <Text fontWeight="bold" fontSize="3xl" mb="4">
+              Recomendados
+            </Text>
             <SimpleGrid
-              columns={[1, 2, 3]}
+              columns={{ base: 1, sm: 1, md: 2, lg: 3, xl: 4 }}
               spacing="5"
-              flexWrap="wrap"
               padding="10px"
               margin="10px 0"
             >
@@ -50,7 +58,7 @@ export const ResultSearch = () => {
                 </Box>
               ))}
             </SimpleGrid>
-          }
+          </Box>
         </div>
       )}
     </div>
