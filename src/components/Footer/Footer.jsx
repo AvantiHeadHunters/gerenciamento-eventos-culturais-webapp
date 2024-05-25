@@ -1,41 +1,35 @@
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, Text, Link as ChakraLink } from "@chakra-ui/react";
 import style from "./footer.module.css";
 import { Link } from "react-router-dom";
-import Proptypes from "prop-types";
+import PropTypes from "prop-types";
 
 export const Footer = () => {
   return (
     <footer>
       <Flex
-        textColor={"white"}
+        textColor="white"
         className={style.Footer}
-        flexDirection={"row"}
-        justifyContent={"space-between"}
-        sx={{
-          "@media (max-width: 520px)": {
-            fontSize: "12",
-            flexDirection: "column-reverse",
-            alignItems: "center",
-          },
-        }}
+        flexDirection="row"
+        alignItems="flex-start"
       >
-        <div>
-          <p className={style.logo}>
+        <Box marginBottom="20px">
+          <Text className={style.logo} margin="0 10px">
             EVENT <span className={style.span}>&#10040;</span> HUNTERS
-          </p>
-          <p className={style.copyright}>
+          </Text>
+          <Text className={style.copyright} margin="0 10px">
             HEAD Hunters &#169; Todos os direitos reservados
-          </p>
-        </div>
-
-        <Box
-          marginRight={"30%"}
-          sx={{ "@media (max-width: 650px) ": { marginBottom: "10px" } }}
-        >
-          <ItemFooter text={"Sobre Nós"} />
-          <ItemFooter text={"Pagamento"} />
-          <ItemFooter text={"Entre em Contato"} />
+          </Text>
+          <img
+            src="src\assets\img\socialicons.png"
+            alt="Icones de redes sociais"
+          />
         </Box>
+
+        <Flex flexDirection="column" alignItems="flex-end">
+          <ItemFooter to="/" text="Sobre Nós" />
+          <ItemFooter to="/" text="Pagamento" />
+          <ItemFooter to="/" text="Entre em Contato" />
+        </Flex>
       </Flex>
     </footer>
   );
@@ -45,13 +39,13 @@ export const ItemFooter = (props) => {
   const { to, text } = props;
 
   return (
-    <Link to={to}>
-      <h1>{text}</h1>
-    </Link>
+    <ChakraLink as={Link} to={to} marginY="5px">
+      <Text>{text}</Text>
+    </ChakraLink>
   );
 };
 
 ItemFooter.propTypes = {
-  to: Proptypes.string,
-  text: Proptypes.string,
-}.isRequired;
+  to: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};

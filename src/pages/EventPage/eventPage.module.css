@@ -2,88 +2,95 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
 
+.image {
+  width: 100%;
+  height: 40vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
-  .image {
-    width: 100%;
-    height: 40vh;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
+.contentBox {
+  width: 100%;
+  max-width: 75rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
 
-  .contentBox {
-    width: 100%;
-    max-width: 75rem;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 20px;
-  }
+.headerBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+  background-color: rgb(236, 236, 234);
+}
 
-  .headerBox {
-    display: flex;
-    gap: 32px;
-    padding: 0 10px;
-    align-items: center;
-    background-color: rgb(236, 236, 234);
-  }
+.categoryBox {
+  height: 30px;
+  width: fit-content;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 16px;
+  background-color: var(--color-primary);
+}
 
-  .categoryBox {
-    height: 30px;
-    width: fit-content;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 16px;
-    background-color: var(--color-primary);
-  }
+.category {
+  font-size: 12px;
+}
 
-  .category {
-    font-size: 12px;
-  }
+.eventBox {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+  border-radius: 8px;
+}
 
-  .eventBox {
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 200px;
-    border-radius: 8px;
-  }
+.infoBox {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-  .infoBox {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+.description {
+  font-size: 0.9rem;
+}
 
-  .description {
-    font-size: 0.9rem;
-  }
+.date {
+  font-size: 0.7rem;
+}
 
-  .date {
-    font-size: 0.7rem;
-  }
+.location {
+  font-size: 0.8rem;
+}
 
-  .location {
-    font-size: 0.8rem;
-  }
+.title {
+  font-size: clamp(1.5rem, 3vw, 3em);
+}
 
-  .title {
-    font-size: clamp(1.5rem, 3vw, 3em);
-  }
+.span {
+  position: fixed;
+  top: 150px;
+  color: var(--color-primary);
+  font-size: 10rem;
+}
 
-  .footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background-color: gray;
-  }
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: gray;
 }
