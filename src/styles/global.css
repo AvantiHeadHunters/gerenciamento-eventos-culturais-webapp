@@ -17,6 +17,7 @@
 
 body {
   font-family: var(--font-primary);
+  color: var(--grey-1);
 }
 
 textarea:focus, input:focus{
