@@ -11,7 +11,6 @@ Foram utilizadas no projeto as seguintes tecnologias:
 - React.js
 - React Hook Form
 - React Router Dom
-- React Icons
 - Chakra-ui
 - Ant Design
 - Axios
