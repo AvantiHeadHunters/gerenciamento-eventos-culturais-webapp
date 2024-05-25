@@ -43,7 +43,7 @@ export const Routers = () => {
         <Route path="/list/categories" element={<ListCategories />} />
         <Route path="/list/events" element={<ListEvents />} />
         <Route path="/list/locations" element={<ListLocations />} />
-        <Route path="/event" element={<EventPage />} />
+        <Route path="/event/:id" element={<EventPage />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
       <Route path="/signup" element={<SignUp />} />
