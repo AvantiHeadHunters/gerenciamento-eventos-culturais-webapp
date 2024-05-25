@@ -24,6 +24,7 @@ export const FormEditEvent = () => {
       categoryId: editingEvent.category_id,
       date: editingEvent.date.slice(0, 10),
       locationId: editingEvent.location_id,
+      image: editingEvent.image
     },
   });
 
@@ -68,11 +69,19 @@ export const FormEditEvent = () => {
           name={"locationId"}
         />
 
+        <label>Imagem</label>
+        <input
+          type="text"
+          className={style.input}
+          {...register("image", { required: "Insira o link de uma imagem" })}
+        />
+
         {(errors.name ||
           errors.description ||
           errors.categoryId ||
           errors.locationId ||
-          errors.date) && (
+          errors.date ||
+          errors.image) && (
           <span style={errorStyle}>Preencha todos os campos</span>
         )}
 

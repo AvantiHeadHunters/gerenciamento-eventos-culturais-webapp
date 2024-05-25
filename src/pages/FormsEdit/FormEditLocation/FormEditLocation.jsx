@@ -82,6 +82,7 @@ export const FormEditLocation = (props) => {
         <label>Imagem</label>
         <input
           type="text"
+          className={style.input}
           {...register("image", { required: "Insira o link de uma imagem" })}
         />
 
