@@ -18,6 +18,7 @@ import { Dashboard } from "./Dashboard/Dashboard.jsx";
 import { ResultSearch } from "./ResultSearch/ResultSearch.jsx";
 import { EventPage } from "./EventPage/EventPage.jsx";
 import { CategoriesPage } from "./CategoriesPage/CategoriesPage.jsx";
+import { LocationsPage } from "./LocationsPage/LocationsPage.jsx";
 
 export {
   InitialPage,
@@ -37,4 +38,5 @@ export {
   ResultSearch,
   EventPage,
   CategoriesPage,
+  LocationsPage,
 };

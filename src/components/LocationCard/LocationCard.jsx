@@ -15,10 +15,7 @@ export const LocationCard = ({ location }) => {
       position="relative"
       margin="10px"
     >
-      <Link
-        to={`/locations/${location.name}`}
-        style={{ textDecoration: "none" }}
-      >
+      <Link to={`/locations/${location.id}`} style={{ textDecoration: "none" }}>
         <Image
           src={location.image}
           alt={location.name}
