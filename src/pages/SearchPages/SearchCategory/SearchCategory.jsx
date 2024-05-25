@@ -19,7 +19,7 @@ export const SearchCategory = () => {
       setRenderList(categories);
     } else {
       const filteredList = categories?.filter((category) =>
-        category.name.toLowerCase().includes(value?.toLowerCase())
+        category.name.toLowerCase().includes(value?.toLowerCase()),
       );
       setRenderList(filteredList);
     }

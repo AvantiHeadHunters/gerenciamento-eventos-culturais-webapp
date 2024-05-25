@@ -192,8 +192,8 @@ export const InitialPage = () => {
           Pesquisar
         </Button>
       </Flex>
-      <Box margin="20px" padding="20px">
-        <Text fontWeight="bold" fontSize="larger" mb="4">
+      <Box margin="0" padding="30px">
+        <Text fontWeight="bold" fontSize="2xl" mb="4">
           Eventos em Destaque
         </Text>
         <Text>Encontre os evento mais procurados</Text>
@@ -205,8 +205,8 @@ export const InitialPage = () => {
           ))}
         </Slider>
       </Box>
-      <Box margin="20px" padding="20px">
-        <Text fontWeight="bold" fontSize="larger" mb="4">
+      <Box margin="0" padding="30px">
+        <Text fontWeight="bold" fontSize="2xl" mb="4">
           Eventos por Categorias
         </Text>
         <Text>Encontre os evento que fazem o seu estilo</Text>
@@ -222,8 +222,8 @@ export const InitialPage = () => {
           ))}
         </SimpleGrid>
       </Box>
-      <Box margin="20px" padding="20px">
-        <Text fontWeight="bold" fontSize="larger" mb="4">
+      <Box margin="0" padding="30px">
+        <Text fontWeight="bold" fontSize="2xl" mb="4">
           Eventos por Localização
         </Text>
         <Text>Encontre os evento que acontecerão perto de você</Text>
