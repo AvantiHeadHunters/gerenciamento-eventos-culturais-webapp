@@ -34,20 +34,19 @@ export const EventPage = () => {
       <div
         className={style.image}
         style={{ backgroundImage: `url(${event?.image})` }}
-      >
-        <div className={style.contentBox}>
-          <div className={style.eventBox}>
-            <div className={style.headerBox}>
-              <h1 className={style.title}>{event?.name}</h1>
-              <div className={style.categoryBox}>
-                <p className={style.category}>{category?.name}</p>
-              </div>
+      ></div>
+      <div className={style.contentBox}>
+        <div className={style.eventBox}>
+          <div className={style.headerBox}>
+            <h1 className={style.title}>{event?.name}</h1>
+            <div className={style.categoryBox}>
+              <p className={style.category}>{category?.name}</p>
             </div>
-            <div className={style.infoBox}>
-              <p className={style.description}>{event?.description}</p>
-              <p className={style.date}>{formatedDate}</p>
-              <p className={style.location}>{location?.name}</p>
-            </div>
+          </div>
+          <div className={style.infoBox}>
+            <p className={style.description}>{event?.description}</p>
+            <p className={style.date}>{formatedDate}</p>
+            <p className={style.location}>{location?.name}</p>
           </div>
         </div>
       </div>
