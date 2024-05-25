@@ -5,15 +5,9 @@
   position: relative;
   bottom: 0;
   margin-top: 50px;
-  height: 20vh;
-}
-
-.NavBar {
+  display: flex;
   justify-content: space-between;
-}
-
-.span {
-  color: #d7e258;
+  align-items: center;
 }
 
 .logo {
@@ -23,4 +17,11 @@
 
 .copyright {
   font-size: 12px;
+  margin-top: 10px;
+}
+
+.span {
+  color: #d7e258;
+  font-size: 2rem;
+  /* Ensure the icon is large */
 }
