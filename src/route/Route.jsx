@@ -16,7 +16,8 @@ import {
   SearchEvent,
   ResultSearch,
   SearchLocation,
-  EventPage
+  EventPage,
+  CategoriesPage,
 } from "../pages/index.js";
 import {
   ListEvents,
@@ -44,6 +45,7 @@ export const Routers = () => {
         <Route path="/list/events" element={<ListEvents />} />
         <Route path="/list/locations" element={<ListLocations />} />
         <Route path="/event" element={<EventPage />} />
+        <Route path="/categories" element={<CategoriesPage />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
       <Route path="/signup" element={<SignUp />} />

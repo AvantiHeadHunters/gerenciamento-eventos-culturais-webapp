@@ -9,11 +9,11 @@ export const EventPage = () => {
   const event = events[0];
 
   const location = locations.find(
-    (location) => location.id === event.location_id
+    (location) => location.id === event.location_id,
   );
 
   const category = categories.find(
-    (category) => category.id === event.category_id
+    (category) => category.id === event.category_id,
   );
 
   const date = event?.date.slice(0, 10);
