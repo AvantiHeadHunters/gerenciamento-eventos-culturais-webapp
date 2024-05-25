@@ -7,12 +7,16 @@ import { EventBox } from "./EventBox/EventBox.jsx";
 import { SelectCategory } from "./SelectComponent/SelectCategory.jsx";
 import { SelectLocation } from "./SelectComponent/SelectLocation.jsx";
 import { LocationBox } from "./LocationBox/LocationBox.jsx";
+import { EventCard } from "./EventCard/EventCard.jsx";
+import { LocationCard } from "./LocationCard/LocationCard.jsx";
 
 export {
   Header,
   Footer,
   CategoryContainer,
   EventBox,
+  EventCard,
+  LocationCard,
   HomePageHeader,
   CategoryBox,
   SelectCategory,

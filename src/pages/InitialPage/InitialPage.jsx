@@ -20,6 +20,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { EventCard } from "../../components/EventCard/EventCard";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
+import { LocationCard } from "../../components/LocationCard/LocationCard";
+import { settingslocation } from "../../components/LocationCard/settingslocation";
+import { settingsdestaque } from "../../components/EventCard/settingsdestaque";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import "../../styles/slick-custom.css";
 
 export const InitialPage = () => {
   const events = [
@@ -99,50 +105,32 @@ export const InitialPage = () => {
         "https://img.freepik.com/fotos-gratis/mulher-determinada-de-construcao-muscular-correndo-enquanto-se-exercita-na-natureza-copie-o-espaco_637285-4877.jpg?t=st=1716518411~exp=1716522011~hmac=b62e9ea4d9814175ef1939fd14ea7b74296aa6d26fcb56b711448cfb08ba6bbc&w=826",
     },
   ];
-
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-      {
-        breakpoint: 1500,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 1380,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 1000,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 650,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+  const locations = [
+    {
+      name: "Casa de show Olimpo",
+      image:
+        "https://s2-extra.glbimg.com/6_PbukxI4h-p0n7W3I7bnLtdxPY=/0x0:1648x1064/888x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_1f551ea7087a47f39ead75f64041559a/internal_photos/bs/2023/T/5/03UCtDRsiswMVQ8l854Q/104318650-ri-exclusivo-rio-de-janeiro-rj-15-09-2023-reabertura-da-casa-de-show-olimpo-na-zona-no.jpg",
+    },
+    {
+      name: "Palau de la Música Catalana",
+      image: "https://bcnmagica.com/imagenes/palau-de-la-musica-930x620.jpg",
+    },
+    {
+      name: "Musikverein",
+      image:
+        "https://www.musikverein.at/wp-content/uploads/2023/01/WGM0002c-Wolf-Dieter-Grabner_900x600.jpg",
+    },
+    {
+      name: "Teatro Colón",
+      image:
+        "https://cnnespanol.cnn.com/wp-content/uploads/2022/05/Teatro-Colon-fachada.jpg?quality=100&strip=info",
+    },
+    {
+      name: "Konzerthaus Berlin",
+      image:
+        "https://bilder.deutschlandfunk.de/FI/LE/_0/d9/FILE_0d94dd50c5e0ee554c1c7905a93b4fbe/konzerthausberlin-felixloechner-sichtkreis-5013-jpg-100-original.jpg",
+    },
+  ];
 
   const [searchEvents, setSearchEvents] = useState("");
   const navigate = useNavigate();
@@ -209,7 +197,7 @@ export const InitialPage = () => {
           Eventos em Destaque
         </Text>
         <Text>Encontre os evento mais procurados</Text>
-        <Slider {...settings}>
+        <Slider {...settingsdestaque}>
           {events.map((event, index) => (
             <Box key={index} padding="10px" margin="10px 0">
               <EventCard event={event} />
@@ -233,6 +221,19 @@ export const InitialPage = () => {
             <CategoryCard key={index} category={category} />
           ))}
         </SimpleGrid>
+      </Box>
+      <Box margin="20px" padding="20px">
+        <Text fontWeight="bold" fontSize="larger" mb="4">
+          Eventos por Localização
+        </Text>
+        <Text>Encontre os evento que acontecerão perto de você</Text>
+        <Slider {...settingslocation}>
+          {locations.map((location, index) => (
+            <Box key={index} padding="10px" margin="10px 0">
+              <LocationCard location={location} />
+            </Box>
+          ))}
+        </Slider>
       </Box>
     </div>
   );
