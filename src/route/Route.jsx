@@ -45,7 +45,7 @@ export const Routers = () => {
         <Route path="/list/events" element={<ListEvents />} />
         <Route path="/list/locations" element={<ListLocations />} />
         <Route path="/event/:id" element={<EventPage />} />
-        <Route path="/categories" element={<CategoriesPage />} />
+        <Route path="/categories/:id" element={<CategoriesPage />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
       <Route path="/signup" element={<SignUp />} />

@@ -3,10 +3,7 @@ import { Link } from "react-router-dom";
 
 const CategoryCard = ({ category }) => {
   return (
-    <Link
-      to={`/categories/${category.name}`}
-      style={{ textDecoration: "none" }}
-    >
+    <Link to={`/categories/${category.id}`} style={{ textDecoration: "none" }}>
       <Box
         borderWidth="1px"
         borderRadius="lg"
