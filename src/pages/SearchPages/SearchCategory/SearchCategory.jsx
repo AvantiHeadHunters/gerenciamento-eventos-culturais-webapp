@@ -35,7 +35,7 @@ export const SearchCategory = () => {
     <Flex
       className={style.Container}
       width={"100%"}
-      height={search == false && "60vh"}
+      minHeight={"70vh"}
       flexDirection={"column"}
       alignItems={"center"}
     >
@@ -84,12 +84,19 @@ export const SearchCategory = () => {
         >
           <h1 className={style.title}>Resultados da sua Busca</h1>
           <h2 className={style.h2}>Você buscou por &quot;{value}&quot;</h2>
-          <Flex className={style.Result}>
-            <ul>
-              {renderList.map((category) => (
-                <CategoryBox key={category.id} category={category} />
-              ))}
-            </ul>
+          <Flex
+            className={style.Result}
+            flexDirection={"row"}
+            flexWrap={"wrap"}
+            justifyContent={"center"}
+          >
+            {renderList.map((category) => (
+              <CategoryBox
+                key={category.id}
+                category={category}
+                margin={"20px"}
+              />
+            ))}
           </Flex>
         </Flex>
       )}

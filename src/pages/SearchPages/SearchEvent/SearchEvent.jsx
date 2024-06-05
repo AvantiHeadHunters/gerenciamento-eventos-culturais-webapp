@@ -36,7 +36,7 @@ export const SearchEvent = () => {
     <Flex
       className={style.Container}
       width={"100%"}
-      height={search == false && "60vh"}
+      minHeight={"70vh"}
       flexDirection={"column"}
       alignItems={"center"}
     >
@@ -103,12 +103,15 @@ export const SearchEvent = () => {
           <h1 className={style.title}>Resultados da sua Busca</h1>
           <h2 className={style.h2}>Você buscou por &quot;{value}&quot;</h2>
 
-          <Flex className={style.Result}>
-            <ul>
-              {events.map((event) => (
-                <EventBox key={event.id} event={event} />
-              ))}
-            </ul>
+          <Flex
+            className={style.Result}
+            flexDirection={"row"}
+            flexWrap={"wrap"}
+            justifyContent={"center"}
+          >
+            {events.map((event) => (
+              <EventBox key={event.id} event={event} margin={"20px"} />
+            ))}
           </Flex>
         </Flex>
       ) : null}

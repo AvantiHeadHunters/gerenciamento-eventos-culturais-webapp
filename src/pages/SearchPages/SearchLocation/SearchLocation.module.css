@@ -52,6 +52,7 @@
 }
 
 @media (max-width: 350px) {
+
   .SearchResultContainer {
     align-items: center;
   }
@@ -69,4 +70,10 @@
   .Container {
     padding: 0 50px;
   }
+}
+
+@media (max-width: 990px){
+   .Container{
+      padding: 0 20px;
+   }
 }
