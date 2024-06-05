@@ -24,12 +24,13 @@ export const CategoryBox = ({ category, margin }) => {
     <Box
       className={style.Box}
       size={["xs", "sm"]}
-      width={["xs", "sm", "md"]}
+      width={["xs", "sm"]}
       margin={margin}
+      padding={"30px 20px"}
     >
       <h1>{name}</h1>
       {loggedUser.isAdmin ? (
-        <ButtonGroup flexDirection={"column"} gap={[2]}>
+        <ButtonGroup flexDirection={"row"} gap={[2]} alignItems={"center"}>
           <IconButton
             icon={<EditIcon />}
             onClick={() => handleUpdateClick(category)}

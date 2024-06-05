@@ -126,6 +126,7 @@ export const Dashboard = () => {
 
 const styleContainer = {
   flexDirection: "column",
+  minHeight: "70vh",
   sx: {
     "@media (max-width: 1000px)": {
       height: "max-content",

@@ -1,5 +1,6 @@
 import { Box, Flex, Text, Link as ChakraLink } from "@chakra-ui/react";
 import style from "./footer.module.css";
+import socialMediaIcons from "../../assets/img/socialicons.png";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
@@ -19,10 +20,7 @@ export const Footer = () => {
           <Text className={style.copyright} margin="0 10px">
             HEAD Hunters &#169; Todos os direitos reservados
           </Text>
-          <img
-            src="src\assets\img\socialicons.png"
-            alt="Icones de redes sociais"
-          />
+          <img src={socialMediaIcons} alt="Icones de redes sociais" />
         </Box>
 
         <Flex flexDirection="column" alignItems="flex-end">

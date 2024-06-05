@@ -35,7 +35,7 @@ export const SearchLocation = () => {
     <Flex
       className={style.Container}
       width={"100%"}
-      height={search == false && "60vh"}
+      minHeight={"70vh"}
       flexDirection={"column"}
       alignItems={"center"}
     >
@@ -79,17 +79,25 @@ export const SearchLocation = () => {
         <Flex
           className={style.SearchResultContainer}
           width={"100%"}
-          justifyContent={"left"}
+          justifyContent={"center"}
           flexDirection={"column"}
+          /* sx={{ "@media (max-width: 930px)": { justifyContent: "center" } }} */
         >
           <h1 className={style.title}>Resultados da sua Busca</h1>
           <h2 className={style.h2}>Você buscou por &quot;{value}&quot;</h2>
-          <Flex className={style.Result}>
-            <ul>
-              {renderList.map((location) => (
-                <LocationBox key={location.id} location={location} />
-              ))}
-            </ul>
+          <Flex
+            className={style.Result}
+            flexDirection={"row"}
+            justifyContent={"center"}
+            flexWrap={"wrap"}
+          >
+            {renderList.map((location) => (
+              <LocationBox
+                key={location.id}
+                location={location}
+                margin={"15px"}
+              />
+            ))}
           </Flex>
         </Flex>
       )}
